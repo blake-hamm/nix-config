@@ -8,11 +8,11 @@ x Firefox
 x Finalize catpuccin config (gnome, kitty, vscode)
 x Add Nix discovery tools (https://github.com/nix-community/awesome-nix?tab=readme-ov-file#discovery)
 x Setup backups (borgmatic + systemd)
-- Deploy 3x microvm on framework with bridge
-- Deploy k3s cluster on local
-- Build basic iso image with ssh
+- Deploy k3s cluster on vm with nix
+- Build minimal iso image with ssh
 - Refactor profile and network config with `hostConfig` dictionary
 - Finalize laptop nixos cluster with vm config
+- Deploy 3x microvm on framework with bridge
 - Finalize k3s dev (1 vm on each laptop)
 - Get argo up on k3s dev
 - Create CEPH cluster for persistent volumes (nixos bare metal or rook)

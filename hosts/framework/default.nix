@@ -1,9 +1,8 @@
-{ inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/profiles/desktop.nix
-    inputs.microvm.nixosModules.host
+    ./../../modules/profiles/desktop.nix
   ];
   # networking.networkmanager.enable = true;
   # networking.interfaces.wlp1s0.ipv4.addresses = [{
@@ -16,15 +15,10 @@
     enable = true;
     networks."10-wlp1s0" = {
       matchConfig.Name = "wlp1s0";
-      address = ["192.168.69.40/24"];
-      gateway = ["192.168.69.1"];
-      dns = ["192.168.69.1"];
+      address = [ "192.168.69.40/24" ];
+      gateway = [ "192.168.69.1" ];
+      dns = [ "192.168.69.1" ];
       linkConfig.RequiredForOnline = "yes";
     };
   };
-
-  # Start my vm
-  microvm.autostart = [
-    "my-microvm"
-  ];
 }

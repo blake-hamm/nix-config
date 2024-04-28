@@ -8,14 +8,13 @@ x Firefox
 x Finalize catpuccin config (gnome, kitty, vscode)
 x Add Nix discovery tools (https://github.com/nix-community/awesome-nix?tab=readme-ov-file#discovery)
 x Setup backups (borgmatic + systemd)
-- Deploy k3s cluster on vm with nix
-- Build minimal iso image with ssh
+- Deploy k3s cluster on framework with nix
 - Refactor profile and network config with `hostConfig` dictionary
-- Finalize laptop nixos cluster with vm config
-- Deploy 3x microvm on framework with bridge
-- Finalize k3s dev (1 vm on each laptop)
-- Get argo up on k3s dev
-- Create CEPH cluster for persistent volumes (nixos bare metal or rook)
+- Build minimal iso image with ssh
+- Finalize laptop server nixos cluster
+- Finalize k3s
+- Get argo up on k3s
+- Create CEPH cluster for persistent volumes (rook)
 - Setup storage server with nixos (temp move data to CEPH)
 - Orchestrate changes to all machine with colemna (https://github.com/zhaofengli/colmena)
 

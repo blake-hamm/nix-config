@@ -4,6 +4,10 @@
 **sudo nixos-rebuild switch --flake .#framework**
 
 
+### k3s
+To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove this module *and* delete the directory `/var/lib/rancher/k3s`
+
+
 ### Virtual Machines
 It is best practice to keep vm flakes seperate from the host. This ensures rebuilds on the host don't take longer than necessary. Once we have a good CI/CD setup (argo workflows), we will automated the following steps.
 

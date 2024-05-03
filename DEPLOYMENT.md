@@ -5,7 +5,7 @@
 
 
 ### k3s
-To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove this module *and* folow the directions [here](https://kube-vip.io/docs/usage/k3s/#clean-environment) to remove k3s on your system.
+To deploy k3s, add the module in `metal/k3s.nix`. To remove, folow the directions [here](https://kube-vip.io/docs/usage/k3s/#clean-environment).
 
 
 ### Virtual Machines

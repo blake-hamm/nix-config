@@ -5,7 +5,7 @@
   ];
 
   # Start vm
-  microvm.autostart = [
-    "my-microvm"
-  ];
+  # microvm.autostart = [
+  #   "my-microvm"
+  # ];
 }

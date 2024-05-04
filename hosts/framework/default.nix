@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/profiles/desktop.nix
-    # ./../../modules/metal/k3s.nix
+    ./../../modules/metal/microvm.nix
   ];
   networking.networkmanager.enable = true;
   # networking.interfaces.wlp1s0.ipv4.addresses = [{

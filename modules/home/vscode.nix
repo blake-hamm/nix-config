@@ -24,7 +24,7 @@
         "editor.detectIndentation" = false;
 
         # Theme
-        "window.zoomLevel" = -2;
+        "window.zoomLevel" = -3;
         "workbench.colorTheme" = "Catppuccin Mocha";
         "workbench.iconTheme" = "catppuccin-mocha";
         "catppuccin.accentColor" = "sapphire";

@@ -1,10 +1,14 @@
+{ inputs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     ./../../modules/profiles/desktop.nix
-    ./../../modules/metal/vm_host.nix
+    inputs.microvm.nixosModules.host
   ];
   networking.networkmanager.enable = true;
+  microvm.autostart = [
+    "framework-vm-k3s-server-1"
+  ];
   # networking.interfaces.wlp1s0.ipv4.addresses = [{
   #   address = "192.168.69.40";
   #   prefixLength = 24;

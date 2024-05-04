@@ -5,7 +5,7 @@
 
 
 ### k3s
-To deploy k3s, add the module in `metal/k3s.nix`. To remove, folow the directions [here](https://kube-vip.io/docs/usage/k3s/#clean-environment).
+To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove module and run `sudo rm -rf /var/lib/rancher /etc/rancher ~/.kube/* /etc/cni /var/lib/cni /var/lib/kubelet; sudo ip addr flush dev lo; sudo ip addr add 127.0.0.1/8 dev lo;`.
 
 
 ### Virtual Machines

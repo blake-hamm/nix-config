@@ -13,6 +13,9 @@
       "--debug"
       "--disable=traefik"
       "--disable=servicellb"
+      "--flannel-backend=none"
+      "--disable-network-policy"
+      "--cluster-cidr=192.168.0.0/16"
       "--tls-san=192.168.69.20"
     ];
   };
@@ -20,5 +23,6 @@
     pkgs.k3s
     pkgs.argo
     pkgs.argocd
+    pkgs.calico-cni-plugin
   ];
 }

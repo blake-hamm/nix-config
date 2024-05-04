@@ -16,6 +16,7 @@ To update and reboot a vm run (normally what you need to do):
 `sudo microvm -Ru framework-vm-k3s-server-1`
 
 To remove a VM, run:
+`sudo systemctl stop microvm@framework-vm-k3s-server-1.service`
 `sudo rm -rf /var/lib/microvms/framework-vm-k3s-server-1`
 
 

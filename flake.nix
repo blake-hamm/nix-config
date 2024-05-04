@@ -32,13 +32,8 @@
       lib = nixpkgs.lib;
     in
     {
-      # Enable microvm self runner
-      # packages.${system} = {
-      #   default = self.packages.${system}.my-microvm;
-      #   my-microvm = self.nixosConfigurations.my-microvm.config.microvm.declaredRunner;
-      # };
-
       nixosConfigurations = {
+
         framework = lib.nixosSystem {
           inherit system;
           modules = [ (import ./hosts/framework) ];
@@ -52,10 +47,12 @@
           inherit system;
           modules = [ (import ./hosts/k3s-server) ];
           specialArgs = {
+            host_ssh_port = 14185;
             host = "framework-vm-k3s-server-1";
             inherit self inputs username;
           };
         };
+
       };
     };
 }

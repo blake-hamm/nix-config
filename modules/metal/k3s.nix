@@ -1,8 +1,5 @@
 { pkgs, username, ... }:
 {
-  systemd.tmpfiles.rules = [
-    "C+ /var/lib/rancher/k3s/server/manifests/custom 0755 root root - /home/${username}/repos/k3s-config/manifests"
-  ];
   networking.firewall.allowedTCPPorts = [
     6443
   ];
@@ -21,8 +18,8 @@
   };
   environment.systemPackages = [
     pkgs.k3s
-    pkgs.argo
-    pkgs.argocd
-    pkgs.calico-cni-plugin
+    # pkgs.argo
+    # pkgs.argocd
+    # pkgs.calico-cni-plugin
   ];
 }

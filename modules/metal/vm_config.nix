@@ -1,4 +1,4 @@
-{ inputs, host, username, ... }:
+{ inputs, host, username, host_ssh_port, ... }:
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -33,7 +33,7 @@
     ];
 
     forwardPorts = [
-      { from = "host"; host.port = 44185; guest.port = 4185; }
+      { from = "host"; host.port = host_ssh_port; guest.port = 4185; }
     ];
 
     hypervisor = "qemu";

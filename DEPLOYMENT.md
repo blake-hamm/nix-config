@@ -5,7 +5,10 @@
 
 
 ### k3s
-To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove module and run `sudo rm -rf /var/lib/rancher /etc/rancher ~/.kube/* /etc/cni /var/lib/cni /var/lib/kubelet; sudo ip addr flush dev lo; sudo ip addr add 127.0.0.1/8 dev lo;`.
+To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove module and run 
+`for interface in $(ip -o link show | grep -v 'lo' | grep -v 'wlp1s0' | awk -F': ' '{print $2}'); do sudo ip addr flush dev $interface; done`
+
+`sudo rm -rf /var/lib/rancher /etc/rancher ~/.kube/* /etc/cni /var/lib/cni /var/lib/kubelet /var/lib/calico /opt/cni /run/calico; sudo ip addr flush dev lo; sudo ip addr add 127.0.0.1/8 dev lo;`.
 
 
 ### Virtual Machines

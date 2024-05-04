@@ -8,5 +8,6 @@
     ../home/kitty.nix
     ../home/vscode.nix
     ../home/firefox.nix
+    ../home/extras.nix
   ];
 }

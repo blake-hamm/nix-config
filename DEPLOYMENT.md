@@ -4,23 +4,19 @@
 **sudo nixos-rebuild switch --flake .#framework**
 
 
-### k3s
-To deploy k3s, add the module in `metal/k3s.nix`. To remove, remove module and run 
-`for interface in $(ip -o link show | grep -v 'lo' | grep -v 'wlp1s0' | awk -F': ' '{print $2}'); do sudo ip addr flush dev $interface; done`
-
-`sudo rm -rf /var/lib/rancher /etc/rancher ~/.kube/* /etc/cni /var/lib/cni /var/lib/kubelet /var/lib/calico /opt/cni /run/calico; sudo ip addr flush dev lo; sudo ip addr add 127.0.0.1/8 dev lo;`.
-
-
 ### Virtual Machines
-It is best practice to keep vm flakes seperate from the host. This ensures rebuilds on the host don't take longer than necessary. Once we have a good CI/CD setup (argo workflows), we will automated the following steps.
+It is best practice to keep vm flakes seperate from the host. This ensures rebuilding the host doesn't take too long or hog resources. Once we have a good CI/CD setup (argo workflows), we will automated the following steps.
 
 To create a vm for the first time run:
-`sudo microvm -f git+file:///home/bhamm/Documents/repos/nix-config -c my-microvm`
+`sudo microvm -f git+file:///home/bhamm/Documents/repos/nix-config -c framework-vm-k3s-server-1`
 
 After the vm is created and `microvm.autostart` is configured, it will automatically start on the next rebuild.
 
 To update and reboot a vm run (normally what you need to do):
-`sudo microvm -Ru my-microvm`
+`sudo microvm -Ru framework-vm-k3s-server-1`
+
+To remove a VM, run:
+`sudo rm -rf /var/lib/microvms/framework-vm-k3s-server-1`
 
 
 #### VM Troubleshooting

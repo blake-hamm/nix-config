@@ -12,14 +12,14 @@
       "--disable=servicellb"
       "--flannel-backend=none"
       "--disable-network-policy"
-      "--tls-san=192.168.69.20" # Also configured in kube-vip
-      "--cluster-cidr=10.42.0.0/16" # Default
+      "--tls-san=192.168.69.19" # Also configured in kube-vip
+      "--cluster-cidr=10.42.0.0/16" # Also configured in calico.yaml
     ];
   };
-  environment.systemPackages = [
-    pkgs.k3s
+  environment.systemPackages = with pkgs; [
+    k3s
+    argocd
     # pkgs.argo
-    # pkgs.argocd
     # pkgs.calico-cni-plugin
   ];
 }

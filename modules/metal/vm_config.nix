@@ -11,7 +11,7 @@
   # Microvm
   microvm = {
     vcpu = 4;
-    mem = 4096; # 4gb
+    mem = 6144; # 6gb
     volumes = [{
       mountPoint = "/var";
       image = "var.img";

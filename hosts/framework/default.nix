@@ -5,6 +5,12 @@
     ./../../modules/profiles/desktop.nix
     inputs.microvm.nixosModules.host
   ];
+
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8 * 1024;
+  }];
+
   networking.networkmanager.enable = true;
   microvm.autostart = [
     "framework-vm-k3s-server-1"

@@ -10,10 +10,12 @@
 
   # Microvm
   microvm = {
+    vcpu = 4;
+    mem = 6144; # 6gb
     volumes = [{
       mountPoint = "/var";
       image = "var.img";
-      size = 40;
+      size = 10240; # 10 gb
     }];
 
     shares = [{
@@ -27,7 +29,7 @@
     interfaces = [
       {
         type = "user";
-        id = "vm-user";
+        id = "qemu";
         mac = "02:00:00:00:00:01";
       }
     ];

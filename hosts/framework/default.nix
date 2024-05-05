@@ -10,9 +10,6 @@
     "framework-vm-k3s-server-1"
   ];
 
-  environment.systemPackages = [
-    pkgs.k3sup
-  ];
   # networking.interfaces.wlp1s0.ipv4.addresses = [{
   #   address = "192.168.69.40";
   #   prefixLength = 24;

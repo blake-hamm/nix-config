@@ -12,8 +12,8 @@
       "--disable=servicellb"
       "--flannel-backend=none"
       "--disable-network-policy"
-      "--cluster-cidr=192.168.0.0/16"
-      "--tls-san=192.168.69.20"
+      "--tls-san=192.168.69.20" # Also configured in kube-vip
+      "--cluster-cidr=10.42.0.0/16" # Default
     ];
   };
   environment.systemPackages = [

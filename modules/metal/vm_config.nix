@@ -11,7 +11,7 @@
   # Microvm
   microvm = {
     vcpu = 4;
-    mem = 6144; # 6gb
+    mem = 4096; # 4gb
     volumes = [{
       mountPoint = "/var";
       image = "var.img";
@@ -19,8 +19,8 @@
     }];
 
     shares = [{
-      # proto = "virtiofs";
-      proto = "9p";
+      proto = "virtiofs";
+      # proto = "9p";
       tag = "ro-store";
       source = "/nix/store";
       mountPoint = "/nix/.ro-store";

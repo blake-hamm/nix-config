@@ -1,4 +1,4 @@
-{ pkgs, username, lib, ...}:
+{ pkgs, username, lib, ... }:
 {
   users.users.${username} = {
     openssh.authorizedKeys.keys = [
@@ -12,10 +12,10 @@
     settings = {
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
-      PermitRootLogin = "no";
+      PermitRootLogin = lib.mkDefault "no";
       UseDns = true;
       X11Forwarding = false;
-      AllowUsers = ["${username}"];
+      AllowUsers = [ "${username}" ];
     };
   };
   services.fail2ban = {
@@ -29,7 +29,7 @@
       backend = systemd
     '';
   };
-  programs.ssh ={
+  programs.ssh = {
     extraConfig = ''
       Host 192.168.69.*
         Port 4185

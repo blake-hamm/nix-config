@@ -53,6 +53,18 @@
           };
         };
 
+        minimal-iso = lib.nixosSystem {
+          inherit system;
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            (import ./modules/profiles/minimal.nix)
+          ];
+          specialArgs = {
+            host = "minimal-iso";
+            inherit self inputs username;
+          };
+        };
+
       };
     };
 }

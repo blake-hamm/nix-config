@@ -3,6 +3,9 @@
 ### Apply changest with flakes
 **sudo nixos-rebuild switch --flake .#framework**
 
+### Build iso image
+`nix build .#nixosConfigurations.minimal-iso.config.system.build.isoImage`
+
 
 ### Virtual Machines
 It is best practice to keep vm flakes seperate from the host. This ensures rebuilding the host doesn't take too long or hog resources. Once we have a good CI/CD setup (argo workflows), we will automated the following steps.

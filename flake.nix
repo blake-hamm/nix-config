@@ -57,7 +57,7 @@
           inherit system;
           modules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            (import ./modules/profiles/minimal.nix)
+            (import ./hosts/iso)
           ];
           specialArgs = {
             host = "minimal-iso";

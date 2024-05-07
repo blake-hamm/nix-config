@@ -3,9 +3,6 @@
 ### Apply changest with flakes
 **sudo nixos-rebuild switch --flake .#framework**
 
-### Build iso image
-`nix build .#nixosConfigurations.minimal-iso.config.system.build.isoImage`
-
 
 ### Virtual Machines
 It is best practice to keep vm flakes seperate from the host. This ensures rebuilding the host doesn't take too long or hog resources. Once we have a good CI/CD setup (argo workflows), we will automated the following steps.
@@ -35,3 +32,12 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
 `sudo nix run .#framework-vm-k3s-server-1`
+
+
+### Build and flash iso image
+*NOTE: This only creates a live iso image with my minimal configuration, to automate the full install, we need to checkout disco and create some kind of sccript like https://haseebmajid.dev/posts/2024-02-04-how-to-create-a-custom-nixos-iso/*
+```bash
+nix build .#nixosConfigurations.minimal-iso.config.system.build.isoImage
+dd if=result/iso/*.iso of=/dev/sdX status=progress
+sync
+```

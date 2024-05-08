@@ -8,6 +8,7 @@
       tree
       htop
       kitty
+      jq
     ];
   };
 }

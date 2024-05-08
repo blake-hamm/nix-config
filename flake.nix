@@ -30,14 +30,10 @@
         config.allowUnfree = true;
       };
       lib = nixpkgs.lib;
-    in {
-      # Enable microvm self runner
-      packages.${system} = {
-        default = self.packages.${system}.my-microvm;
-        my-microvm = self.nixosConfigurations.my-microvm.config.microvm.declaredRunner;
-      };
-
+    in
+    {
       nixosConfigurations = {
+
         framework = lib.nixosSystem {
           inherit system;
           modules = [ (import ./hosts/framework) ];
@@ -47,14 +43,28 @@
           };
         };
 
-        my-microvm = lib.nixosSystem {
+        framework-vm-k3s-server-1 = lib.nixosSystem {
           inherit system;
-          modules = [ (import ./hosts/my-microvm) ];
+          modules = [ (import ./hosts/k3s-server) ];
           specialArgs = {
-            host = "my-microvm";
+            host_ssh_port = 14185;
+            host = "framework-vm-k3s-server-1";
             inherit self inputs username;
           };
         };
+
+        minimal-iso = lib.nixosSystem {
+          inherit system;
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            (import ./hosts/iso)
+          ];
+          specialArgs = {
+            host = "minimal-iso";
+            inherit self inputs username;
+          };
+        };
+
       };
     };
 }

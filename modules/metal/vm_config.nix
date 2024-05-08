@@ -1,39 +1,41 @@
-{ inputs, host, ... }:
+{ inputs, host, username, host_ssh_port, ... }:
 {
   imports = [
     inputs.microvm.nixosModules.microvm
-    ./../../modules/profiles/minimal.nix
+    ./../profiles/minimal.nix
   ];
-  
+
   # Config
-  users.users.bhamm.password = "";
+  users.users.${username}.password = "";
 
   # Microvm
   microvm = {
-    volumes = [ {
+    vcpu = 4;
+    mem = 6144; # 6gb
+    volumes = [{
       mountPoint = "/var";
       image = "var.img";
-      size = 40;
-    } ];
+      size = 10240; # 10 gb
+    }];
 
-    shares = [ {
+    shares = [{
       proto = "virtiofs";
       # proto = "9p";
       tag = "ro-store";
       source = "/nix/store";
       mountPoint = "/nix/.ro-store";
-    } ];
+    }];
 
     interfaces = [
       {
         type = "user";
-        id = "vm-test1";
+        id = "qemu";
         mac = "02:00:00:00:00:01";
       }
     ];
 
     forwardPorts = [
-      { from = "host"; host.port = 44185; guest.port = 4185; }
+      { from = "host"; host.port = host_ssh_port; guest.port = 4185; }
     ];
 
     hypervisor = "qemu";

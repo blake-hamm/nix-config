@@ -1,15 +1,13 @@
 { inputs, pkgs, ... }:
 {
   imports = [
+    ./disko.nix
     ./hardware-configuration.nix
     ./../../modules/profiles/desktop.nix
     inputs.microvm.nixosModules.host
   ];
 
-  swapDevices = [{
-    device = "/var/lib/swapfile";
-    size = 8 * 1024;
-  }];
+  users.users.root.hashedPassword = "!"; # disable root
 
   networking.networkmanager.enable = true;
   microvm.autostart = [

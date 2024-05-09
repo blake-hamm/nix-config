@@ -9,12 +9,14 @@
  - [x] Add Nix discovery tools (https://github.com/nix-community/awesome-nix?tab=readme-ov-file#discovery)
  - [x] Setup backups (borgmatic + systemd)
  - [x] Deploy k3s cluster on framework with nix
- - [ ] Use disko to manage discs
+ - [x] Use disko to manage discs
  - [ ] Setup colemna locally
  - [ ] Setup colemna with storage host (aorus)
  - [ ] Finalize auros + colemna
  - [ ] Refactor profile and network config with `hostConfig` dictionary
  - [x] Build minimal iso image with ssh
+ - [ ] Finalize nas (x2)
+ - [ ] Finalize auros and bastion host
  - [ ] Finalize laptop server nixos cluster
  - [ ] Finalize k3s
  - [ ] Get argo up on k3s

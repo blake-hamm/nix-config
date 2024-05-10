@@ -4,9 +4,10 @@
 
   # Both
   networking.hostName = "${host}";
-  environment.systemPackages = with pkgs; [
-    wpa_supplicant # Just in case
-  ];
+  networking.wireless.enable = true; # For wpa_supplicant just in case
+  # environment.systemPackages = with pkgs; [
+  #   wpa_supplicant # Just in case
+  # ];
 
   # Server ethernet
   # systemd.network = {

@@ -20,7 +20,7 @@ Next, you should be able to ssh into your live environment. Find the ip address 
 
 Now, you will want to view the device id's. Find the device with `lsblk` and find the id with `udevadm info /dev/sdX`. Once you have this info, construct your disko config independent of your flake project. To apply the disko config, run:
 ```bash
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/disk-config.nix
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko /tmp/nix-config/hosts/machine/disko.nix
 ```
 
 Once your disk is setup, you can integrate the disko config into your flake project and push to the repo.
@@ -29,7 +29,7 @@ Next, you need to put your hardware config into your git project. To generate a 
 
 After host config is finalized and the `flake.nix` is updated, copy this repo to `/mnt/nix-config` and install with `sudo nixos-install --no-root-passwd --flake /mnt/nix-config#the-machine`.
 
-Next, you need to setup a password for your user **before** rebooting. Run `nixos-enter --root /mnt -c 'passwd <username>` to set the password.
+Next, you need to setup a password for your user **before** rebooting. Run `sudo nixos-enter --root /mnt -c 'passwd <username>'` to set the password.
 
 Finally, you can reboot into your system! Once booted in, your existing `/nix-config` directory during the live boot should be accessible - you can delete this. Refactor to use colmena instead of standard flakes, test it and push up to the origin.
 

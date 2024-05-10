@@ -13,7 +13,7 @@ colmena apply --on @server # apply colmena on all machines with 'server' tag
 *NOTE: This only creates a live iso image with my minimal configuration, to automate the full install, we need to checkout disco and create some kind of sccript like https://haseebmajid.dev/posts/2024-02-04-how-to-create-a-custom-nixos-iso/*
 ```bash
 nix build .#nixosConfigurations.minimal-iso.config.system.build.isoImage
-dd if=result/iso/*.iso of=/dev/sdX status=progress
+dd if=result/iso/*.iso of=/dev/sdX status=progress # Or use balena etcher
 sync
 ```
 

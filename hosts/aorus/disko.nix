@@ -100,13 +100,10 @@
         datasets = {
           storage = {
             type = "zfs_fs";
-            options.mountpoint = "legacy";
             mountpoint = "/zpool_ssd";
           };
         };
       };
-    };
-    zpool = {
       zpool_hdd = {
         type = "zpool";
         datasets = {

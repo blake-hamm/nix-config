@@ -4,8 +4,8 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/disk/by-id/ata-KINGSTON_SA400S37240G_50026B77845B74E3";
         type = "disk";
+        device = "/dev/disk/by-id/ata-KINGSTON_SA400S37240G_50026B77845B74E3";
         content = {
           type = "gpt";
           partitions = {
@@ -36,21 +36,33 @@
         };
       };
       zfs-hdd = {
-        device = "/dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465";
         type = "disk";
+        device = "/dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465";
         content = {
-          type = "zfs";
-          pool = "zhdd";
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zhdd";
+              };
+            };
+          };
         };
       };
     };
     zpool = {
       zhdd = {
         type = "zpool";
+        mountpoint = "/zhdd";
+        rootFsOptions = {
+          canmount = "off";
+        };
         datasets = {
-          zfs_hdd_fs = {
+          fs = {
             type = "zfs_fs";
-            mountpoint = "/zfs_hdd_fs";
+            mountpoint = "/zhdd/fs";
           };
         };
       };

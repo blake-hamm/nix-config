@@ -35,6 +35,34 @@
           };
         };
       };
+      # zfs-hdd = {
+      #   device = "/dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465";
+      #   type = "disk";
+      #   content = {
+      #     type = "gpt";
+      #     partitions = {
+      #       zfs = {
+      #         size = "100%";
+      #         content = {
+      #           type = "zfs";
+      #           pool = "zhdd";
+      #         };
+      #       };
+      #     };
+      #   };
+      # };
     };
+    # zpool = {
+    #   zhdd = {
+    #     type = "zpool";
+    #     mountpoint = "/zfs_hdd";
+    #     datasets = {
+    #       fs = {
+    #         type = "zfs_fs";
+    #         mountpoint = "/zfs_hdd/fs";
+    #       };
+    #     };
+    #   };
+    # };
   };
 }

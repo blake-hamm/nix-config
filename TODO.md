@@ -10,10 +10,10 @@
  - [x] Setup backups (borgmatic + systemd)
  - [x] Deploy k3s cluster on framework with nix
  - [x] Use disko to manage discs
- - [ ] Setup colemna locally
- - [ ] Setup colemna with storage host (aorus)
- - [ ] Finalize auros + colemna + disk
- - [ ] Refactor profile and network config with `hostConfig` dictionary
+ - [x] Setup colemna locally
+ - [x] Setup colemna with storage host (aorus)
+ - [ ] Finalize aorus + colemna + disk
+ - [ ] Refactor profile and network config with `hostConfig` dictionary (or put network file with each host)
  - [x] Build minimal iso image with ssh
  - [ ] Finalize nas (x2)
  - [ ] Finalize bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
@@ -21,8 +21,7 @@
  - [ ] Finalize k3s
  - [ ] Get argo up on k3s
  - [ ] Create CEPH cluster for persistent volumes (rook)
- - [ ] Setup storage server with nixos (temp move data to CEPH)
- - [ ] Orchestrate changes to all machine with colemna (https://github.com/zhaofengli/colmena)
+ - [ ] Use secret for ssh port and ip 192.168.X value
 
 ## At this point I should have:
 - NixOS config with security and backups

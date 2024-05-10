@@ -45,15 +45,32 @@
             # system, profile, ip
             host = "framework";
           };
+          nodeSpecialArgs.aorus = {
+            # TODO: Define hostConfig dictionary with:
+            # system, profile, ip
+            host = "aorus";
+          };
         };
 
         framework = { name, nodes, pkgs, ... }: {
           deployment = {
             allowLocalDeployment = true;
-            tags = [ "local" "desktop" ];
+            tags = [ "framework" "local" "desktop" ];
             targetUser = "${username}";
+            targetHost = "localhost";
+            targetPort = 4185;
           };
           imports = [ ./hosts/framework ];
+        };
+
+        aorus = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "aorus" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.120"; # Temporary based on wifi
+            targetPort = 4185;
+          };
+          imports = [ ./hosts/aorus ];
         };
       };
 

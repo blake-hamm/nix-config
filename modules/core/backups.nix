@@ -50,13 +50,13 @@
   # Create systemd timer
   systemd = {
     timers."borgmatic" = {
-      wantedBy = [ "timers.target" ];
       timerConfig = {
-        OnBootSec = "0";
+        OnBootSec = "5s";
         OnUnitActiveSec = "2h";
         Persistent = true;
         Unit = "borgmatic.service";
       };
+      after = [ "timers.target" ];
     };
     services."borgmatic" = {
       path = with pkgs; [ borgmatic ];

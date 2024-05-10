@@ -22,5 +22,8 @@
     description = "${username}";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-  nix.settings.allowed-users = [ "${username}" ];
+  nix.settings = {
+    allowed-users = [ "${username}" ];
+    trusted-users = [ "${username}" ];
+  };
 }

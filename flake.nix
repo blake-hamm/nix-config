@@ -45,6 +45,11 @@
             # system, profile, ip
             host = "framework";
           };
+          nodeSpecialArgs.aorus = {
+            # TODO: Define hostConfig dictionary with:
+            # system, profile, ip
+            host = "aorus";
+          };
         };
 
         framework = { name, nodes, pkgs, ... }: {
@@ -54,6 +59,15 @@
             targetUser = "${username}";
           };
           imports = [ ./hosts/framework ];
+        };
+
+        aorus = { name, nodes, pkgs, ... }: {
+          deployment = {
+            allowLocalDeployment = true;
+            tags = [ "server" ];
+            targetUser = "${username}";
+          };
+          imports = [ ./hosts/aorus ];
         };
       };
 

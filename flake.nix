@@ -28,49 +28,65 @@
   outputs = { nixpkgs, self, ... } @ inputs:
     let
       username = "bhamm";
-      # TODO: Define hostConfig dictionary with:
-      # system, profile, ip
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
     in
     {
-      nixosConfigurations = {
-
-        framework = lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/framework) ];
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
           specialArgs = {
+            inherit self inputs username;
+          };
+          nodeSpecialArgs.framework = {
+            # TODO: Define hostConfig dictionary with:
+            # system, profile, ip
             host = "framework";
-            inherit self inputs username;
           };
         };
 
-        framework-vm-k3s-server-1 = lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/k3s-server) ];
-          specialArgs = {
-            host_ssh_port = 14185;
-            host = "framework-vm-k3s-server-1";
-            inherit self inputs username;
+        framework = { name, nodes, pkgs, ... }: {
+          deployment = {
+            allowLocalDeployment = true;
+            tags = [ "local" "desktop" ];
+            targetUser = "${username}";
           };
+          imports = [ ./hosts/framework ];
         };
-
-        minimal-iso = lib.nixosSystem {
-          inherit system;
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            (import ./hosts/iso)
-          ];
-          specialArgs = {
-            host = "minimal-iso";
-            inherit self inputs username;
-          };
-        };
-
       };
+      # nixosConfigurations = {
+
+      #   framework = lib.nixosSystem {
+      #     inherit system;
+      #     modules = [ (import ./hosts/framework) ];
+      #     specialArgs = {
+      #       host = "framework";
+      #       inherit self inputs username;
+      #     };
+      #   };
+
+      #   framework-vm-k3s-server-1 = lib.nixosSystem {
+      #     inherit system;
+      #     modules = [ (import ./hosts/k3s-server) ];
+      #     specialArgs = {
+      #       host_ssh_port = 14185;
+      #       host = "framework-vm-k3s-server-1";
+      #       inherit self inputs username;
+      #     };
+      #   };
+
+      #   minimal-iso = lib.nixosSystem {
+      #     inherit system;
+      #     modules = [
+      #       "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+      #       (import ./hosts/iso)
+      #     ];
+      #     specialArgs = {
+      #       host = "minimal-iso";
+      #       inherit self inputs username;
+      #     };
+      #   };
+
+      # };
     };
 }

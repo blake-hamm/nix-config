@@ -31,6 +31,7 @@
       system = "x86_64-linux";
     in
     {
+      # Bare metal
       colmena = {
         meta = {
           nixpkgs = import nixpkgs {
@@ -55,27 +56,22 @@
           imports = [ ./hosts/framework ];
         };
       };
+
+      # VM and iso configs without colmena
       nixosConfigurations = {
 
-        #   framework = lib.nixosSystem {
-        #     inherit system;
-        #     modules = [ (import ./hosts/framework) ];
-        #     specialArgs = {
-        #       host = "framework";
-        #       inherit self inputs username;
-        #     };
-        #   };
+        # VM
+        framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ (import ./hosts/k3s-server) ];
+          specialArgs = {
+            host_ssh_port = 14185;
+            host = "framework-vm-k3s-server-1";
+            inherit self inputs username;
+          };
+        };
 
-        #   framework-vm-k3s-server-1 = lib.nixosSystem {
-        #     inherit system;
-        #     modules = [ (import ./hosts/k3s-server) ];
-        #     specialArgs = {
-        #       host_ssh_port = 14185;
-        #       host = "framework-vm-k3s-server-1";
-        #       inherit self inputs username;
-        #     };
-        #   };
-
+        # iso
         minimal-iso = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [

@@ -1,7 +1,11 @@
 # This file contains instructions to deploy config to machines
 
-## Apply local changes with colemna
-**sudo nixos-rebuild switch --flake .#framework**
+## Apply changes
+```bash
+colmena apply-local --sudo # Apply colmena on my local
+colmena apply --on @server # apply colmena on all machines with 'server' tag
+#sudo nixos-rebuild switch --flake .#framework # rebuild the standard way
+```
 
 
 ## Setup new machine
@@ -32,6 +36,8 @@ After host config is finalized and the `flake.nix` is updated, copy this repo to
 Next, you need to setup a password for your user **before** rebooting. Run `sudo nixos-enter --root /mnt -c 'passwd <username>'` to set the password.
 
 Finally, you can reboot into your system! Once booted in, your existing `/nix-config` directory during the live boot should be accessible - you can delete this. Refactor to use colmena instead of standard flakes, test it and push up to the origin.
+
+*More automation potential here - https://github.com/zhaofengli/colmena/issues/42#issuecomment-1004528027*
 
 
 ### Virtual Machines

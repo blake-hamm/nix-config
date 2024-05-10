@@ -7,9 +7,6 @@
     inputs.microvm.nixosModules.host
   ];
 
-  users.users.root.hashedPassword = "!"; # disable root
-
-  networking.networkmanager.enable = true;
   microvm.autostart = [
     "framework-vm-k3s-server-1"
   ];

@@ -76,6 +76,14 @@
 
       # VM and iso configs without colmena
       nixosConfigurations = {
+        aorus = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ (import ./hosts/aorus) ];
+          specialArgs = {
+            host = "aorus";
+            inherit self inputs username;
+          };
+        };
 
         # VM
         framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {

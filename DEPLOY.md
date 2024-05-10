@@ -25,13 +25,13 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 
 Once your disk is setup, you can integrate the disko config into your flake project and push to the repo.
 
-Next, you need to put your hardware config into your git project. To generate a hardware config, run `nixos-generate-config --no-filesystems --show-hardware-config` and copy it to your host configs.
+Next, you need to put your hardware config into your git project. To generate a hardware config, run `nixos-generate-config --no-filesystems --show-hardware-config` and copy it to your host configs. Finish your host config using standard flake (without colmena).
 
 After host config is finalized and the `flake.nix` is updated, copy this repo to `/mnt/nix-config` and install with `sudo nixos-install --no-root-passwd --flake /mnt/nix-config#the-machine`.
 
 Next, you need to setup a password for your user **before** rebooting. Run `nixos-enter --root /mnt -c 'passwd <username>` to set the password.
 
-Finally, you can reboot into your system! Once booted in, your existing `nix-config` directory during the live boot should be accessible and you will want to push up to the origin.
+Finally, you can reboot into your system! Once booted in, your existing `/nix-config` directory during the live boot should be accessible - you can delete this. Refactor to use colmena instead of standard flakes, test it and push up to the origin.
 
 
 ### Virtual Machines

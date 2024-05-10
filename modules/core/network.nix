@@ -1,9 +1,12 @@
-{ host, ... }:
+{ host, pkgs, ... }:
 {
   # TODO: Handle server vs. desktop for network
 
   # Both
   networking.hostName = "${host}";
+  environment.systemPackages = with pkgs; [
+    wpa_supplicant # Just in case
+  ];
 
   # Server ethernet
   # systemd.network = {

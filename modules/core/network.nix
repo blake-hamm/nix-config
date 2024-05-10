@@ -4,7 +4,7 @@
 
   # Both
   networking.hostName = "${host}";
-  networking.wireless.enable = true; # For wpa_supplicant just in case
+  # networking.wireless.enable = true; # For wpa_supplicant just in case
   # environment.systemPackages = with pkgs; [
   #   wpa_supplicant # Just in case
   # ];
@@ -27,7 +27,7 @@
   # networking.useNetworkd = true;
 
   # Desktop wifi
-  # networking.networkmanager.enable = true;
+  networking.networkmanager.enable = true;
   # networking.interfaces.wlp1s0.ipv4.addresses = [{
   #   address = "192.168.69.40";
   #   prefixLength = 24;

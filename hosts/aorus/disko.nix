@@ -1,6 +1,15 @@
-{ inputs, ... }:
+# { inputs, config, ... }:
 {
-  imports = [ inputs.disko.nixosModules.disko ];
+  # imports = [ inputs.disko.nixosModules.disko ];
+
+  # # zfs support
+  # networking.hostId = "806a53e4"; # Required for zfs pool
+  # boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  # boot.kernelParams = [ "nohibernate" ];
+  # boot.supportedFilesystems = [ "zfs" ];
+  # boot.zfs.forceImportRoot = false;
+
+  # Devices
   disko.devices = {
     disk = {
       main = {
@@ -35,6 +44,38 @@
           };
         };
       };
+      zfs-ssd1 = {
+        type = "disk";
+        device = "/dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8";
+        content = {
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zpool_ssd";
+              };
+            };
+          };
+        };
+      };
+      zfs-ssd2 = {
+        type = "disk";
+        device = "/dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB";
+        content = {
+          type = "gpt";
+          partitions = {
+            zfs = {
+              size = "100%";
+              content = {
+                type = "zfs";
+                pool = "zpool_ssd";
+              };
+            };
+          };
+        };
+      };
       zfs-hdd = {
         type = "disk";
         device = "/dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465";
@@ -45,7 +86,7 @@
               size = "100%";
               content = {
                 type = "zfs";
-                pool = "zhdd";
+                pool = "zpool_hdd";
               };
             };
           };
@@ -53,16 +94,25 @@
       };
     };
     zpool = {
-      zhdd = {
+      zpool_ssd = {
         type = "zpool";
-        mountpoint = "/zhdd";
-        rootFsOptions = {
-          canmount = "off";
-        };
+        mode = "mirror";
         datasets = {
-          fs = {
+          storage = {
             type = "zfs_fs";
-            mountpoint = "/zhdd/fs";
+            options.mountpoint = "legacy";
+            mountpoint = "/zpool_ssd";
+          };
+        };
+      };
+    };
+    zpool = {
+      zpool_hdd = {
+        type = "zpool";
+        datasets = {
+          storage = {
+            type = "zfs_fs";
+            mountpoint = "/zpool_hdd";
           };
         };
       };

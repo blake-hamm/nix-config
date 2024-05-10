@@ -1,6 +1,6 @@
 # This file contains instructions to deploy config to machines
 
-## Apply local changes with flakes
+## Apply local changes with colemna
 **sudo nixos-rebuild switch --flake .#framework**
 
 

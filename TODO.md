@@ -12,11 +12,11 @@
  - [x] Use disko to manage discs
  - [ ] Setup colemna locally
  - [ ] Setup colemna with storage host (aorus)
- - [ ] Finalize auros + colemna
+ - [ ] Finalize auros + colemna + disk
  - [ ] Refactor profile and network config with `hostConfig` dictionary
  - [x] Build minimal iso image with ssh
  - [ ] Finalize nas (x2)
- - [ ] Finalize auros and bastion host
+ - [ ] Finalize bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
  - [ ] Finalize laptop server nixos cluster
  - [ ] Finalize k3s
  - [ ] Get argo up on k3s

@@ -28,28 +28,40 @@
   outputs = { nixpkgs, self, ... } @ inputs:
     let
       username = "bhamm";
-      # TODO: Define hostConfig dictionary with:
-      # system, profile, ip
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      lib = nixpkgs.lib;
     in
     {
-      nixosConfigurations = {
-
-        framework = lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/framework) ];
+      # Bare metal
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs {
+            inherit system;
+          };
           specialArgs = {
-            host = "framework";
             inherit self inputs username;
+          };
+          nodeSpecialArgs.framework = {
+            # TODO: Define hostConfig dictionary with:
+            # system, profile, ip
+            host = "framework";
           };
         };
 
-        framework-vm-k3s-server-1 = lib.nixosSystem {
+        framework = { name, nodes, pkgs, ... }: {
+          deployment = {
+            allowLocalDeployment = true;
+            tags = [ "local" "desktop" ];
+            targetUser = "${username}";
+          };
+          imports = [ ./hosts/framework ];
+        };
+      };
+
+      # VM and iso configs without colmena
+      nixosConfigurations = {
+
+        # VM
+        framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [ (import ./hosts/k3s-server) ];
           specialArgs = {
@@ -59,7 +71,8 @@
           };
         };
 
-        minimal-iso = lib.nixosSystem {
+        # iso
+        minimal-iso = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"

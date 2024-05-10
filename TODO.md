@@ -12,7 +12,7 @@
  - [x] Use disko to manage discs
  - [ ] Setup colemna locally
  - [ ] Setup colemna with storage host (aorus)
- - [ ] Finalize auros + colemna + disk
+ - [ ] Finalize aorus + colemna + disk
  - [ ] Refactor profile and network config with `hostConfig` dictionary
  - [x] Build minimal iso image with ssh
  - [ ] Finalize nas (x2)

@@ -10,8 +10,9 @@
  - [x] Setup backups (borgmatic + systemd)
  - [x] Deploy k3s cluster on framework with nix
  - [x] Use disko to manage discs
- - [ ] Setup colemna locally
+ - [x] Setup colemna locally
  - [ ] Setup colemna with storage host (aorus)
+ - [ ] Use secret for ssh port and ip 192.168.X value
  - [ ] Finalize aorus + colemna + disk
  - [ ] Refactor profile and network config with `hostConfig` dictionary
  - [x] Build minimal iso image with ssh

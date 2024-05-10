@@ -66,6 +66,7 @@
             tags = [ "server" ];
             targetUser = "${username}";
             targetHost = "192.168.69.120"; # Temporary based on wifi
+            targetPort = 4185;
           };
           imports = [ ./hosts/aorus ];
         };

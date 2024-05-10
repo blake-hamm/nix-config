@@ -57,6 +57,8 @@
             allowLocalDeployment = true;
             tags = [ "framework" "local" "desktop" ];
             targetUser = "${username}";
+            targetHost = "localhost";
+            targetPort = 4185;
           };
           imports = [ ./hosts/framework ];
         };

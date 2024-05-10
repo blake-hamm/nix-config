@@ -63,9 +63,9 @@
 
         aorus = { name, nodes, pkgs, ... }: {
           deployment = {
-            allowLocalDeployment = true;
             tags = [ "server" ];
             targetUser = "${username}";
+            targetHost = "192.168.69.120"; # Temporary based on wifi
           };
           imports = [ ./hosts/aorus ];
         };

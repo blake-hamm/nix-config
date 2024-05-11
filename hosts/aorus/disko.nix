@@ -7,9 +7,9 @@
   # boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   # boot.kernelParams = [ "nohibernate" ];
   # boot.supportedFilesystems = [ "zfs" ];
-  # boot.zfs.forceImportRoot = false;
 
   # Devices
+  disko.extraRootModules = [ "zfs" ];
   disko.devices = {
     disk = {
       main = {

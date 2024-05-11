@@ -13,7 +13,7 @@ colmena apply --on @server # apply colmena on all machines with 'server' tag
 *NOTE: This only creates a live iso image with my minimal configuration, to automate the full install, we need to checkout disco and create some kind of sccript like https://haseebmajid.dev/posts/2024-02-04-how-to-create-a-custom-nixos-iso/*
 ```bash
 nix build .#nixosConfigurations.minimal-iso.config.system.build.isoImage
-dd if=result/iso/*.iso of=/dev/sdX status=progress
+dd if=result/iso/*.iso of=/dev/sdX status=progress # Or use balena etcher
 sync
 ```
 
@@ -30,6 +30,8 @@ sudo nix --experimental-features "nix-command flakes" run github:nix-community/d
 Once your disk is setup, you can integrate the disko config into your flake project and push to the repo.
 
 Next, you need to put your hardware config into your git project. To generate a hardware config, run `nixos-generate-config --no-filesystems --show-hardware-config` and copy it to your host configs. Finish your host config using standard flake (without colmena).
+
+*TODO: Use nixos anywhere*
 
 After host config is finalized and the `flake.nix` is updated, copy this repo to `/mnt/nix-config` and install with `sudo nixos-install --no-root-passwd --flake /mnt/nix-config#the-machine`.
 
@@ -68,3 +70,18 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
 `sudo nix run .#framework-vm-k3s-server-1`
+
+### ZFS
+*TODO: Use my ansible playbook instead(?)*
+Generally following - https://github.com/nmasur/dotfiles/blob/b546d5b43ab8ff148532a65a43d0f3ad50582e33/docs/zfs.md
+
+Create pool:
+```bash
+# zpool_hdd
+sudo zpool create -f zpool_hdd /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465
+
+# zpool_ssd
+sudo zpool create -f -o ashift=12 zpool_ssd mirror \
+  /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8 \
+  /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB
+```

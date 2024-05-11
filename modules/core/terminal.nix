@@ -1,14 +1,10 @@
-{ inputs, username, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
+  environment.systemPackages = with pkgs; [
+    git
+    tree
+    htop
+    kitty
+    jq
   ];
-  home-manager.users.${username} = {
-    home.packages = with pkgs; [
-      tree
-      htop
-      kitty
-      jq
-    ];
-  };
 }

@@ -1,12 +1,9 @@
-# { inputs, config, ... }:
+{ inputs, config, ... }:
 {
-  # imports = [ inputs.disko.nixosModules.disko ];
+  imports = [ inputs.disko.nixosModules.disko ];
 
   # # zfs support
-  # networking.hostId = "806a53e4"; # Required for zfs pool
-  # boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-  # boot.kernelParams = [ "nohibernate" ];
-  # boot.supportedFilesystems = [ "zfs" ];
+  networking.hostId = "806a53e4"; # Required for zfs pool
 
   # Devices
   disko.extraRootModules = [ "zfs" ];

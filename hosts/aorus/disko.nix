@@ -7,6 +7,11 @@
   boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
   boot.kernelParams = [ "nohibernate" ];
   boot.supportedFilesystems = [ "zfs" ];
+  boot.zfs.forceImportRoot = false;
+  boot.zfs.extraPools = [ "zpool_ssd" "zpool_hdd" ];
+  boot.extraModprobeConfig = ''
+    options zfs zfs_autoimport_disable=0
+  '';
   # services.prometheus.exporters.zfs.enable = config.prometheus.exporters.enable;
   # prometheus.scrapeTargets = [
   #   "127.0.0.1:${builtins.toString config.services.prometheus.exporters.zfs.port}"

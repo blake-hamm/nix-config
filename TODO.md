@@ -12,22 +12,21 @@
  - [x] Use disko to manage discs
  - [x] Setup colemna locally
  - [x] Setup colemna with storage host (aorus)
- - [ ] Finalize aorus + colemna + disk
- - [ ] Refactor profile and network config with `hostConfig` dictionary (or put network file with each host)
+ - [x] Finalize aorus + colemna + disk
+ - [ ] Refactor profile and network config with `hostConfig` dictionary
  - [x] Build minimal iso image with ssh
  - [ ] Finalize nas (x2)
  - [ ] Finalize bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
- - [ ] Finalize laptop server nixos cluster
  - [ ] Finalize k3s
- - [ ] Get argo up on k3s
- - [ ] Create CEPH cluster for persistent volumes (rook)
- - [ ] Use secret for ssh port and ip 192.168.X value
+ - [ ] Create NFS for persistent volume
+ - [ ] Use vault secrets for ssh port and ip 192.168.X value
+ - [ ] Use vault for ssh (?)
 
 ## At this point I should have:
 - NixOS config with security and backups
-- NixOS on all machines with changes propogated from my framework with colemna
-- CEPH and NFS storage available securely on network
-- k3s dev running with basic apps
+- NixOS on all machines
+- NFS storage available securely on network
+- k3s running with basic apps
 
 ## Next steps after are:
 - Run home manager command (without sudo)
@@ -39,6 +38,7 @@
 - More k3s apps with middleware
 - Wireguard setup
 - Setup fingerprint
+ - [ ] Finalize laptop server nixos cluster
 
 # Keep in mind
 - For now, document manual deployment (cli) steps

@@ -1,12 +1,21 @@
 { inputs, config, ... }:
 {
-  imports = [ inputs.disko.nixosModules.disko ];
+  imports = [
+    inputs.disko.nixosModules.disko
+  ];
 
-  # # zfs support
-  networking.hostId = "806a53e4"; # Required for zfs pool
+  # ZFS
+  networking.hostId = "806a53e4";
+  zfs.enable = true;
+  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelParams = [ "nohibernate" ];
+  boot.supportedFilesystems = [ "zfs" ];
+  services.prometheus.exporters.zfs.enable = config.prometheus.exporters.enable;
+  prometheus.scrapeTargets = [
+    "127.0.0.1:${builtins.toString config.services.prometheus.exporters.zfs.port}"
+  ];
 
   # Devices
-  disko.extraRootModules = [ "zfs" ];
   disko.devices = {
     disk = {
       main = {
@@ -41,75 +50,6 @@
           };
         };
       };
-      # zfs-ssd1 = {
-      #   type = "disk";
-      #   device = "/dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       zfs = {
-      #         size = "100%";
-      #         content = {
-      #           type = "zfs";
-      #           pool = "zpool_ssd";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
-      # zfs-ssd2 = {
-      #   type = "disk";
-      #   device = "/dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       zfs = {
-      #         size = "100%";
-      #         content = {
-      #           type = "zfs";
-      #           pool = "zpool_ssd";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
-      # zfs-hdd = {
-      #   type = "disk";
-      #   device = "/dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465";
-      #   content = {
-      #     type = "gpt";
-      #     partitions = {
-      #       zfs = {
-      #         size = "100%";
-      #         content = {
-      #           type = "zfs";
-      #           pool = "zpool_hdd";
-      #         };
-      #       };
-      #     };
-      #   };
-      # };
     };
-    # zpool = {
-    #   zpool_ssd = {
-    #     type = "zpool";
-    #     mode = "mirror";
-    #     datasets = {
-    #       storage = {
-    #         type = "zfs_fs";
-    #         mountpoint = "/zpool_ssd";
-    #       };
-    #     };
-    #   };
-    #   zpool_hdd = {
-    #     type = "zpool";
-    #     datasets = {
-    #       storage = {
-    #         type = "zfs_fs";
-    #         mountpoint = "/zpool_hdd";
-    #       };
-    #     };
-    #   };
-    # };
   };
 }

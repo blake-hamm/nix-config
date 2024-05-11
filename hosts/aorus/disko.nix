@@ -1,8 +1,6 @@
 { inputs, config, ... }:
 {
-  imports = [
-    inputs.disko.nixosModules.disko
-  ];
+  imports = [ inputs.disko.nixosModules.disko ];
 
   # ZFS
   networking.hostId = "806a53e4";

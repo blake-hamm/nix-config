@@ -70,3 +70,18 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
 `sudo nix run .#framework-vm-k3s-server-1`
+
+### ZFS
+*TODO: Use my ansible playbook instead(?)*
+Generally following - https://github.com/nmasur/dotfiles/blob/b546d5b43ab8ff148532a65a43d0f3ad50582e33/docs/zfs.md
+
+Create pool:
+```bash
+# zpool_hdd
+sudo zpool create -f zpool_hdd /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465
+
+# zpool_ssd
+sudo zpool create -f -o ashift=12 zpool_ssd mirror \
+  /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8 \
+  /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB
+```

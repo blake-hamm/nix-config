@@ -13,7 +13,7 @@
  - [x] Setup colemna locally
  - [x] Setup colemna with storage host (aorus)
  - [x] Finalize aorus + colemna + disk
- - [ ] Refactor profile and network config with `hostConfig` dictionary
+ - [x] Refactor profile and network config
  - [x] Build minimal iso image with ssh
  - [ ] Finalize nas (x2)
  - [ ] Finalize bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html

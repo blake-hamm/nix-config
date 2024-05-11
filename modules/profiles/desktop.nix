@@ -9,5 +9,6 @@
     ../home/vscode.nix
     ../home/firefox.nix
     ../home/extras.nix
+    ../hardware/nfs_client.nix
   ];
 }

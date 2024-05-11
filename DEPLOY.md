@@ -78,10 +78,10 @@ Generally following - https://github.com/nmasur/dotfiles/blob/b546d5b43ab8ff1485
 Create pool:
 ```bash
 # zpool_hdd
-sudo zpool create -f zpool_hdd /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465
+sudo zpool create -f  -m /mnt/zpool_hdd zpool_hdd /dev/disk/by-id/ata-WDC_WD20EARS-00MVWB0_WD-WMAZA1699465
 
 # zpool_ssd
-sudo zpool create -f -o ashift=12 zpool_ssd mirror \
+sudo zpool create -f  -m /mnt/zpool_ssd -o ashift=12 zpool_ssd mirror \
   /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8 \
   /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB
 ```

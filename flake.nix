@@ -41,13 +41,9 @@
             inherit self inputs username;
           };
           nodeSpecialArgs.framework = {
-            # TODO: Define hostConfig dictionary with:
-            # system, profile, ip
             host = "framework";
           };
           nodeSpecialArgs.aorus = {
-            # TODO: Define hostConfig dictionary with:
-            # system, profile, ip
             host = "aorus";
           };
         };
@@ -67,7 +63,7 @@
           deployment = {
             tags = [ "aorus" "server" ];
             targetUser = "${username}";
-            targetHost = "192.168.69.125"; # Temporary based on wifi
+            targetHost = "192.168.69.12";
             targetPort = 4185;
           };
           imports = [ ./hosts/aorus ];
@@ -76,14 +72,6 @@
 
       # VM and iso configs without colmena
       nixosConfigurations = {
-        aorus = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/aorus) ];
-          specialArgs = {
-            host = "aorus";
-            inherit self inputs username;
-          };
-        };
 
         # VM
         framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {

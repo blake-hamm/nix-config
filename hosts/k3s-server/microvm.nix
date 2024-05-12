@@ -12,11 +12,10 @@
     vcpu = 2;
     mem = 4096; # 4gb
 
-    # TODO: Leverage zfs with volume
     volumes = [{
       mountPoint = "/var";
       image = "/mnt/zpool_ssd/aorus/microvms/var.img";
-      # Requires permissions:
+      # Requires permissions (replace with ansible?):
       # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
       # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
       size = 10240; # 10 gb

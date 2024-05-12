@@ -16,6 +16,7 @@
  - [x] Refactor profile and network config
  - [x] Build minimal iso image with ssh
  - [x] Finalize nas (x2)
+ - [ ] Automate k3s node deployment with nix functional approach
  - [ ] Finalize k3s
  - [ ] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value

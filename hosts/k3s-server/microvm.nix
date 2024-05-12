@@ -11,8 +11,10 @@
   microvm = {
     vcpu = 2;
     mem = 4096; # 4gb
+
+    # TODO: Leverage zfs with volume
     volumes = [{
-      mountPoint = "/var";
+      mountPoint = "/mnt/zpool_ssd";
       image = "var.img";
       size = 10240; # 10 gb
     }];

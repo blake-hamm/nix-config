@@ -48,7 +48,7 @@ It is best practice to keep vm flakes seperate from the host. This ensures rebui
 To create a vm for the first time run:
 ```bash
 #sudo microvm -f git+file:///home/bhamm/repos/nix-config -c aorus-k3s-server-1
-sudo microvm -f git+https://github.com/blake-hamm/nix-config/ -c aorus-k3s-server-1
+sudo microvm -f github:blake-hamm/nix-config/feature/k3s -c aorus-k3s-server-1
 sudo systemctl start microvm@aorus-k3s-server-1.service
 ```
 
@@ -61,7 +61,7 @@ To update and reboot a vm run (normally what you need to do):
 To remove a VM, run:
 ```bash
 sudo systemctl stop microvm@framework-vm-k3s-server-1.service
-sudo rm -rf /var/lib/microvms/framework-vm-k3s-server-1
+sudo rm -rf /var/lib/microvms/aorus-k3s-server-1
 ```
 
 

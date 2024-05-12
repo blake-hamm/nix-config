@@ -57,7 +57,7 @@ sudo systemctl start microvm@aorus-k3s-server-1.service
 
 To update and reboot a vm run (normally what you need to do):
 ```bash
-sudo microvm -Ru aorus-k3s-server-1.service
+sudo microvm -Ru aorus-k3s-server-1
 ```
 
 To remove a VM, run:

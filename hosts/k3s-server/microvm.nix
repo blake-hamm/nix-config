@@ -24,7 +24,27 @@
       mountPoint = "/nix/.ro-store";
     }];
 
+    interfaces = [
+      {
+        type = "tap";
+        id = "vm-test";
+        mac = "02:00:00:00:00:01";
+      }
+    ];
+
     hypervisor = "qemu";
     socket = "control.socket";
+  };
+
+  systemd.network.enable = true;
+  systemd.network.networks."10-lan" = {
+    matchConfig.Type = "ether";
+    networkConfig = {
+      address = [ "192.168.69.30/24" ];
+      gateway = [ "192.168.69.1" ];
+      dns = [ "192.168.69.1" ];
+      linkConfig.RequiredForOnline = "yes";
+      networkConfig.DHCP = "no";
+    };
   };
 }

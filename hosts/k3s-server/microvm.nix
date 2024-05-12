@@ -15,7 +15,10 @@
     # TODO: Leverage zfs with volume
     volumes = [{
       mountPoint = "/var";
-      image = "/mnt/zpool_ssd/aorus/var.img";
+      image = "/mnt/zpool_ssd/aorus/microvms/var.img";
+      # Requires permissions:
+      # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
+      # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
       size = 10240; # 10 gb
     }];
 

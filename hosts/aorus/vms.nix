@@ -8,6 +8,7 @@
   #   device = "/mnt/zpool_ssd";
   #   options = [ "bind" ];
   # };
+  # users.users.microvm.extraGroups = [ "disk" ];
   microvm.autostart = [
     "aorus-k3s-server-1"
   ];

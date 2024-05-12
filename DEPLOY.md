@@ -47,8 +47,9 @@ It is best practice to keep vm flakes seperate from the host. This ensures rebui
 
 To create a vm for the first time run:
 ```bash
-sudo microvm -f git+file:///home/bhamm/repos/nix-config -c framework-vm-k3s-server-1
-sudo systemctl start microvm@framework-vm-k3s-server-1.service
+#sudo microvm -f git+file:///home/bhamm/repos/nix-config -c aorus-k3s-server-1
+sudo microvm -f git+https://github.com/blake-hamm/nix-config/tree/feature/k3s -c aorus-k3s-server-1
+sudo systemctl start microvm@aorus-k3s-server-1.service
 ```
 
 `microvm.autostart` will ensure the microvm always starts up.

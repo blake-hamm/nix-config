@@ -15,20 +15,20 @@
  - [x] Finalize aorus + colemna + disk
  - [x] Refactor profile and network config
  - [x] Build minimal iso image with ssh
- - [ ] Finalize nas (x2)
- - [ ] Finalize bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
+ - [x] Finalize nas (x2)
  - [ ] Finalize k3s
  - [ ] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value
  - [ ] Use vault for ssh (?)
 
 ## At this point I should have:
-- NixOS config with security and backups
-- NixOS on all machines
-- NFS storage available securely on network
-- k3s running with basic apps
+- [x] NixOS config with security and backups
+- [x] NixOS on all machines
+- [x] NFS storage available securely on network
+- [ ] k3s running with basic apps
 
 ## Next steps after are:
+ - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
 - Run home manager command (without sudo)
 - Automated CI/CD with argo events/workflows + colemna connected to SCM
     - Touchless deployment where: PR deploys to dev, merge to main deploys to prod

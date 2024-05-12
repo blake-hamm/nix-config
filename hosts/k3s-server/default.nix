@@ -1,7 +1,8 @@
 {
   # Generic vm client config
   imports = [
-    ./../../modules/metal/vm_config.nix
+    ./microvm.nix
+    ./minimal.nix
     ./../../modules/metal/k3s.nix
   ];
 

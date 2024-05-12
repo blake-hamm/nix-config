@@ -1,10 +1,11 @@
-{ lib, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     # ./network.nix
     ./disko.nix
     ./hardware-configuration.nix
     ./../../modules/profiles/minimal.nix
+    inputs.microvm.nixosModules.host
   ];
 
   # Network

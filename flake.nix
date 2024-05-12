@@ -74,15 +74,24 @@
       nixosConfigurations = {
 
         # VM
-        framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
+        # framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
+        #   inherit system;
+        #   modules = [ (import ./hosts/k3s-server) ];
+        #   specialArgs = {
+        #     host_ssh_port = 14185;
+        #     host = "framework-vm-k3s-server-1";
+        #     inherit self inputs username;
+        #   };
+        # };
+        aorus-k3s-server-1 = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [ (import ./hosts/k3s-server) ];
           specialArgs = {
-            host_ssh_port = 14185;
-            host = "framework-vm-k3s-server-1";
+            host = "aorus-k3s-server-1";
             inherit self inputs username;
           };
         };
+
 
         # iso
         minimal-iso = nixpkgs.lib.nixosSystem {

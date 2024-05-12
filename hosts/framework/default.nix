@@ -7,8 +7,8 @@
     inputs.microvm.nixosModules.host
   ];
 
-  microvm.autostart = [
-    "framework-vm-k3s-server-1"
-  ];
+  # microvm.autostart = [
+  #   "framework-vm-k3s-server-1"
+  # ];
 
 }

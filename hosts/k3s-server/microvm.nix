@@ -14,7 +14,7 @@
 
     # TODO: Leverage zfs with volume
     volumes = [{
-      mountPoint = "/mnt/zpool_ssd";
+      mountPoint = "/var";
       image = "var.img";
       size = 10240; # 10 gb
     }];

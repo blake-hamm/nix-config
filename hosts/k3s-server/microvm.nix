@@ -39,12 +39,10 @@
   systemd.network.enable = true;
   systemd.network.networks."10-lan" = {
     matchConfig.Type = "ether";
-    networkConfig = {
-      address = [ "192.168.69.30/24" ];
-      gateway = [ "192.168.69.1" ];
-      dns = [ "192.168.69.1" ];
-      linkConfig.RequiredForOnline = "yes";
-      networkConfig.DHCP = "no";
-    };
+    address = [ "192.168.69.30/24" ];
+    gateway = [ "192.168.69.1" ];
+    dns = [ "192.168.69.1" ];
+    linkConfig.RequiredForOnline = "yes";
+    networkConfig.DHCP = "no";
   };
 }

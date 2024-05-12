@@ -2,7 +2,7 @@
   # Generic vm client config
   imports = [
     ./microvm.nix
-    ./../../modules/pofiles/minimal.nix
+    ./../../modules/profiles/minimal.nix
     ./../../modules/metal/k3s.nix
   ];
 

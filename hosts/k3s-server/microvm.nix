@@ -5,7 +5,7 @@
   ];
 
   # Config
-  users.users.${username}.password = "";
+  users.users.${username}.password = ""; # TODO: Replace with vault
 
   # Microvm
   microvm = {

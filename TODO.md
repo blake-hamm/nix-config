@@ -18,7 +18,7 @@
  - [x] Finalize nas (x2)
  - [ ] Automate k3s node deployment with nix functional approach
  - [ ] Finalize k3s
- - [ ] Create NFS for persistent volume
+ - [x] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value
  - [ ] Use vault for ssh (?)
 

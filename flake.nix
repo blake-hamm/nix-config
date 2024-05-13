@@ -78,8 +78,17 @@
           k3sVMs = import ./modules/k3s { inherit system inputs pkgs username; };
 
           # k3s VM config
-          k3sVMConfigFramework = k3sVMs.buildConfig { vm_host = "framework"; n = 5; };
-          k3sVMConfigAorus = k3sVMs.buildConfig { vm_host = "aorus"; n = 1; };
+          k3sVMConfigFramework = k3sVMs.buildConfig {
+            vm_host = "framework";
+            kube_vip = "192.168.69.19";
+            # static_ip_start = ""; # TODO: Configure static ip more dynamically
+            n = 1;
+          };
+          k3sVMConfigAorus = k3sVMs.buildConfig {
+            vm_host = "aorus";
+            kube_vip = "192.168.69.20";
+            n = 3;
+          };
 
           # All other config
           otherConfig = {
@@ -97,7 +106,7 @@
             };
           };
         in
-        # Combine all the config together
+        # Combine config together
         k3sVMConfigFramework // k3sVMConfigAorus // otherConfig;
 
     };

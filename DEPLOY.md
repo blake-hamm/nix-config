@@ -47,7 +47,10 @@ It is best practice to keep vm flakes seperate from the host. This ensures rebui
 
 To create a vm for the first time run:
 ```bash
-sudo microvm -f git+file:///home/bhamm/nix-config -c aorus-k3s-server-1
+sudo mkdir -p /mnt/zpool_ssd/framework/microvms # Create .img directory
+sudo chown -R microvm:kvm /mnt/zpool_ssd/framework/microvms # Give kvm group and microvm user ownership
+sudo chmod -R 755 /mnt/zpool_ssd/framework/microvms
+sudo microvm -f git+file:///home/bhamm/repos/nix-config -c k3s-server-1
 # sudo microvm -f github:blake-hamm/nix-config/feature/k3s -c aorus-k3s-server-1
 sudo systemctl start microvm@aorus-k3s-server-1.service
 ```

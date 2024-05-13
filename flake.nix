@@ -71,41 +71,70 @@
       };
 
       # VM and iso configs without colmena
-      nixosConfigurations = {
+      nixosConfigurations =
+        let
+          pkgs = inputs.nixpkgs;
+          lib = inputs.nixpkgs.lib;
+          k3sVMs = import ./modules/k3s { inherit lib system inputs pkgs username; };
 
-        # VM
-        # framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
-        #   inherit system;
-        #   modules = [ (import ./hosts/k3s-server) ];
-        #   specialArgs = {
-        #     host_ssh_port = 14185;
-        #     host = "framework-vm-k3s-server-1";
-        #     inherit self inputs username;
-        #   };
-        # };
-        aorus-k3s-server-1 = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/k3s-server) ];
-          specialArgs = {
-            host = "aorus-k3s-server-1";
-            inherit self inputs username;
+          # k3s VM config
+          k3sVMConfigFramework = k3sVMs.build { vm_host = "framework"; };
+          k3sVMConfigAorus = k3sVMs.build { vm_host = "aorus"; };
+
+          # Other config
+          otherConfig = {
+            # ISO image
+            minimal-iso = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+                (import ./hosts/iso)
+              ];
+              specialArgs = {
+                host = "minimal-iso";
+                inherit self inputs username;
+              };
+            };
           };
-        };
+        in
+        k3sVMConfigFramework // otherConfig;
+      # k3sVMs.build { vm_host = "framework"; };
+      # {
+
+      # VM
+      # vm1 = vm.build "vm1";
+      # framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
+      #   inherit system;
+      #   modules = [ (import ./hosts/k3s-server) ];
+      #   specialArgs = {
+      #     host_ssh_port = 14185;
+      #     host = "framework-vm-k3s-server-1";
+      #     inherit self inputs username;
+      #   };
+      # };
+      # aorus-k3s-server-1 = nixpkgs.lib.nixosSystem {
+      #   inherit system;
+      #   modules = [ (import ./hosts/k3s-server) ];
+      #   specialArgs = {
+      #     host = "aorus-k3s-server-1";
+      #     inherit self inputs username;
+      #   };
+      # };
 
 
-        # iso
-        minimal-iso = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            (import ./hosts/iso)
-          ];
-          specialArgs = {
-            host = "minimal-iso";
-            inherit self inputs username;
-          };
-        };
+      # # iso
+      # minimal-iso = nixpkgs.lib.nixosSystem {
+      #   inherit system;
+      #   modules = [
+      #     "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+      #     (import ./hosts/iso)
+      #   ];
+      #   specialArgs = {
+      #     host = "minimal-iso";
+      #     inherit self inputs username;
+      #   };
+      # };
 
-      };
+      # };
     };
 }

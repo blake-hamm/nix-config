@@ -43,3 +43,4 @@
 
 # Keep in mind
 - For now, document manual deployment (cli) steps
+- Is there a way to template out colmena, nixosConfigurations and homeManager all in one go? Then, I have multiple options to run the same thing? Or, can I just use colmena for everything and I just need to sort out the cli commands to create an image/deploy microvm?

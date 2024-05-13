@@ -10,7 +10,7 @@
   # Microvm
   microvm = {
     vcpu = 2;
-    mem = 6144; # 6gb
+    mem = 4096; # 4gb
 
     volumes = [{
       mountPoint = "/var";
@@ -32,7 +32,7 @@
       {
         type = "tap";
         id = "k3s-vm-${i}";
-        mac = "02:00:00:00:00:01";
+        mac = "02:00:00:00:00:0${i}";
       }
     ];
 

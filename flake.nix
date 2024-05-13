@@ -55,7 +55,7 @@
             tags = [ "framework" "local" "desktop" ];
             targetUser = "${username}";
             targetHost = "localhost";
-            targetPort = "${sshPort}";
+            targetPort = sshPort;
           };
           imports = [ ./hosts/framework ];
         };
@@ -65,7 +65,7 @@
             tags = [ "aorus" "server" ];
             targetUser = "${username}";
             targetHost = "192.168.69.12";
-            targetPort = "${sshPort}";
+            targetPort = sshPort;
           };
           imports = [ ./hosts/aorus ];
         };
@@ -75,12 +75,11 @@
       nixosConfigurations =
         let
           pkgs = inputs.nixpkgs;
-          lib = inputs.nixpkgs.lib;
-          k3sVMs = import ./modules/k3s { inherit lib system inputs pkgs username; };
+          k3sVMs = import ./modules/k3s { inherit system inputs pkgs username; };
 
           # k3s VM config
-          k3sVMConfigFramework = k3sVMs.build { vm_host = "framework"; };
-          k3sVMConfigAorus = k3sVMs.build { vm_host = "aorus"; };
+          k3sVMConfigFramework = k3sVMs.buildConfig { vm_host = "framework"; n = 5; };
+          k3sVMConfigAorus = k3sVMs.buildConfig { vm_host = "aorus"; n = 1; };
 
           # All other config
           otherConfig = {

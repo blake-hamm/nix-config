@@ -4,6 +4,9 @@
     openssh.authorizedKeys.keys = [
       # bhamm framework
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKsS2H4frdi7AvzkGMPMRaQ+B46Af5oaRFtNJY3uCHt blake.j.hamm@gmail.com"
+
+      # aorus
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN5r6xi72tDaAnl6iGyCoCsg/PdN9qKmzteBS3Gej/cJ bhamm@aorus"
     ];
   };
   services.openssh = {

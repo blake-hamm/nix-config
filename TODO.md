@@ -17,10 +17,12 @@
  - [x] Build minimal iso image with ssh
  - [x] Finalize nas (x2)
  - [x] Automate k3s node deployment with nix functional approach
+ - [ ] Ensure vault in k3s (need for secrets in nix project - k3s depends on)
  - [ ] Finalize k3s
  - [x] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value
  - [ ] Use vault for ssh (?)
+ - [ ] Vault is used for all secrets
 
 ## At this point I should have:
 - [x] NixOS config with security and backups
@@ -31,11 +33,11 @@
 ## Next steps after are:
  - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
 - Run home manager command (without sudo)
-- Automated CI/CD with argo events/workflows + colemna connected to SCM
+- Automated CI/CD with argo events/workflows connected to SCM (monorepo)
     - Touchless deployment where: PR deploys to dev, merge to main deploys to prod
 - Deploy vault and refactor more securely
 - Make "prod" k3s
-- Local and global (cloudflare) dns
+- Local (coredns) and global (cloudflare) dns - refactor project to url's
 - More k3s apps with middleware
 - Wireguard setup
 - Setup fingerprint

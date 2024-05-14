@@ -1,9 +1,14 @@
 { lib, ... }:
 {
-  networking.useNetworkd = true;
-  networking.firewall.enable = true;
-  networking.useDHCP = lib.mkForce false;
-  networking.enableIPv6 = lib.mkForce false;
+  networking = {
+    networkmanager.enable = lib.mkForce false;
+    wireless.enable = true;
+    wireless.userControlled.enable = true; # To connect to wifi
+    useNetworkd = true;
+    firewall.enable = true;
+    useDHCP = lib.mkForce false;
+    enableIPv6 = lib.mkForce false;
+  };
   systemd.network = {
     enable = true;
     netdevs = {

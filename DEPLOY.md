@@ -76,7 +76,7 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 `ssh bhamm@localhost -p 14185 -o StrictHostKeyChecking=no`
 
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
-`sudo nix run .#framework-vm-k3s-server-1`
+`sudo nix run .#nixosConfigurations.aorus-k3s-server-1.config.microvm.declaredRunner`
 
 ### ZFS
 *TODO: Use my ansible playbook instead(?)*

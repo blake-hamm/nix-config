@@ -22,7 +22,8 @@
     }];
 
     shares = [{
-      proto = "virtiofs";
+      proto = "9p";
+      # proto = "virtiofs";
       tag = "ro-store";
       source = "/nix/store";
       mountPoint = "/nix/.ro-store";
@@ -30,14 +31,10 @@
 
     interfaces = [
       {
-        type = "user";
+        type = "tap";
         id = "k3s-vm-${i}";
         mac = "02:00:00:00:00:0${i}";
       }
-    ];
-
-    forwardPorts = [
-      { from = "host"; host.port = 14185; guest.port = 4185; }
     ];
 
     hypervisor = "qemu";

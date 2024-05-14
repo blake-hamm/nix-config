@@ -52,7 +52,7 @@ sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms # Give kvm group and mic
 sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
 sudo microvm -f git+file:///home/bhamm/nix-config -c aorus-k3s-server-1
 # sudo microvm -f github:blake-hamm/nix-config/feature/k3s -c aorus-k3s-server-1
-sudo systemctl start microvm@aorus-k3s-server-1.service
+sudo systemctl start microvm@aorus-k3s-server-1
 ```
 
 `microvm.autostart` will ensure the microvm always starts up.

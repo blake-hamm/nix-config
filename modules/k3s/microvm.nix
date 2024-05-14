@@ -30,10 +30,14 @@
 
     interfaces = [
       {
-        type = "tap";
+        type = "user";
         id = "k3s-vm-${i}";
         mac = "02:00:00:00:00:0${i}";
       }
+    ];
+
+    forwardPorts = [
+      { from = "host"; host.port = 14185; guest.port = 4185; }
     ];
 
     hypervisor = "qemu";

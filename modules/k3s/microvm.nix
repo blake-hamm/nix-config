@@ -22,8 +22,8 @@
     }];
 
     shares = [{
-      proto = "9p";
-      # proto = "virtiofs";
+      # proto = "9p";
+      proto = "virtiofs";
       tag = "ro-store";
       source = "/nix/store";
       mountPoint = "/nix/.ro-store";

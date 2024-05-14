@@ -67,6 +67,7 @@ To remove a VM, run:
 ```bash
 sudo systemctl stop microvm@aorus-k3s-server-1
 sudo rm -rf /var/lib/microvms/aorus-k3s-server-1
+sudo rm /mnt/zpool_ssd/aorus/microvms/aorus-k3s-server-1.img
 ```
 
 

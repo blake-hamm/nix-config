@@ -5,7 +5,7 @@
     ./user.nix
     ./network.nix
     ./ssh.nix
-    ./backups.nix
+    # ./backups.nix # TODO: backup zpools
     ./terminal.nix
     ./git.nix
   ];

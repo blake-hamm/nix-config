@@ -1,8 +1,4 @@
-{ inputs, username, ... }:
 {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
   # Nix settings
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
@@ -23,13 +19,6 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
-  };
-
-  # Home manager config
-  home-manager.users.${username} = {
-    # Nicely reload system units when changing configs
-    systemd.user.startServices = "sd-switch";
-    home.stateVersion = "23.11";
   };
 
   # Other system config

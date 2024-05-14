@@ -5,6 +5,7 @@
   ];
   services.k3s = {
     enable = true;
+    clusterInit = true;
     role = "server";
     extraFlags = toString [
       "--debug"

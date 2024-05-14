@@ -87,7 +87,7 @@
           k3sVMConfigAorus = k3sVMs.buildConfig {
             vm_host = "aorus";
             kube_vip = "192.168.69.20";
-            n = 3;
+            n = 1;
           };
 
           # All other config

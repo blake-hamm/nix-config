@@ -1,8 +1,5 @@
 { pkgs, kube_vip, ... }:
 {
-  networking.firewall.allowedTCPPorts = [
-    6443
-  ];
   services.k3s = {
     enable = true;
     clusterInit = true;

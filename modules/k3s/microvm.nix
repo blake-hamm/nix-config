@@ -40,15 +40,4 @@
     hypervisor = "qemu";
     socket = "control.socket";
   };
-
-  systemd.network.enable = true;
-  systemd.network.networks."10-lan" = {
-    matchConfig.Type = "ether";
-    # TODO: Paramaterize the below static ip better
-    address = [ "192.168.69.3${i}/24" ]; # Will conflict in cluster
-    gateway = [ "192.168.69.1" ];
-    dns = [ "192.168.69.1" ];
-    linkConfig.RequiredForOnline = "yes";
-    networkConfig.DHCP = "no";
-  };
 }

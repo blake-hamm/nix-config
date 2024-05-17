@@ -9,7 +9,7 @@
 
   # Microvm
   microvm = {
-    vcpu = 6;
+    vcpu = 4;
     mem = 8192; # 8gb
 
     volumes = [{
@@ -18,7 +18,7 @@
       # Requires permissions (replace with ansible?):
       # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
       # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
-      size = 20480; # 20 gb
+      size = 51200; # 50 gb
     }];
 
     shares = [{

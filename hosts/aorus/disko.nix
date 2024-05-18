@@ -1,10 +1,10 @@
-{ inputs, config, ... }:
+{ inputs, lib, config, ... }:
 {
   imports = [ inputs.disko.nixosModules.disko ];
 
   # ZFS
   networking.hostId = "806a53e4";
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = lib.mkForce config.boot.zfs.package.latestCompatibleLinuxPackages;
   boot.kernelParams = [ "nohibernate" ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;

@@ -1,5 +1,6 @@
 { pkgs, kube_vip, ... }:
 {
+  systemd.enableUnifiedCgroupHierarchy = false;
   services.k3s = {
     enable = true;
     clusterInit = true;

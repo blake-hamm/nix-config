@@ -9,13 +9,13 @@
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 8 * 1024;
+    size = 16 * 1024;
   }];
 
   # Microvm
   microvm = {
     vcpu = 4;
-    mem = 8 * 1024; # 8gb
+    mem = 16 * 1024; # 8gb
 
     volumes = [{
       mountPoint = "/var";

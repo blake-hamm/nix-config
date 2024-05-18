@@ -7,10 +7,15 @@
   # Config
   users.users.${username}.password = ""; # TODO: Replace with vault
 
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8 * 1024;
+  }];
+
   # Microvm
   microvm = {
     vcpu = 4;
-    mem = 8192; # 8gb
+    mem = 8 * 1024; # 8gb
 
     volumes = [{
       mountPoint = "/var";

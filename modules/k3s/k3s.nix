@@ -14,7 +14,7 @@
       "--tls-san=${kube_vip}" # Also configured in kube-vip
       "--cluster-cidr=10.42.0.0/16" # Also configured in calico.yaml
     ];
-    token = "my_token";
+    token = if (vm_name == "k3s-server-1") then "" else "my_token";
     serverAddr = if (vm_name == "k3s-server-1") then "" else "https://${kube_vip}:6443";
   };
   environment.systemPackages = with pkgs; [

@@ -17,8 +17,7 @@
  - [x] Build minimal iso image with ssh
  - [x] Finalize nas (x2)
  - [x] Automate k3s node deployment with nix functional approach
- - [ ] Ensure vault in k3s (need for secrets in nix project - k3s depends on)
- - [ ] Finalize k3s
+ - [ ] Finalize 3 node k3s with token and serverAddr
  - [x] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value
  - [ ] Use vault for ssh (?)

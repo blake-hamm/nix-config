@@ -1,4 +1,4 @@
-{ inputs, username, vm_host, vm_name, i, ... }:
+{ inputs, username, vm_name, i, ... }:
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -19,7 +19,7 @@
 
     volumes = [{
       mountPoint = "/var";
-      image = "/mnt/zpool_ssd/${vm_host}/microvms/${vm_name}.img";
+      image = "/mnt/zpool_ssd/microvms/${vm_name}.img";
       # Requires permissions (replace with ansible?):
       # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
       # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms

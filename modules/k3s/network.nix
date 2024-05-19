@@ -19,8 +19,10 @@
     networkConfig.DHCP = "no";
   };
 
-  # k3s ports
+  # k3s ports - https://docs.k3s.io/installation/requirements#networking
   networking.firewall.allowedTCPPorts = [
     6443
+    2379 # etcd
+    2380 # etcd
   ];
 }

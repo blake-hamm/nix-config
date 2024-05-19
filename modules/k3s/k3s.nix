@@ -14,6 +14,9 @@
       "--tls-san=${kube_vip}" # Also configured in kube-vip
       "--cluster-cidr=10.42.0.0/16" # Also configured in calico.yaml
     ];
+    token = "my_token";
+    serverAddr = "192.168.69.31:6443";
+    clusterInit = true;
   };
   environment.systemPackages = with pkgs; [
     k3s

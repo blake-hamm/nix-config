@@ -47,12 +47,12 @@ It is best practice to keep vm flakes seperate from the host. This ensures rebui
 
 To create a vm for the first time run:
 ```bash
-sudo mkdir -p /mnt/zpool_ssd/aorus/microvms # Create .img directory
-sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms # Give kvm group and microvm user ownership
-sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
-sudo microvm -f git+file:///home/bhamm/nix-config -c aorus-k3s-server-1
+sudo mkdir -p /mnt/zpool_ssd/microvms # Create .img directory
+sudo chown -R microvm:kvm /mnt/zpool_ssd/microvms # Give kvm group and microvm user ownership
+sudo chmod -R 755 /mnt/zpool_ssd/microvms
+sudo microvm -f git+file:///home/bhamm/nix-config -c k3s-server-1
 # sudo microvm -f github:blake-hamm/nix-config/feature/k3s -c aorus-k3s-server-1
-sudo systemctl start microvm@aorus-k3s-server-1
+sudo systemctl start microvm@k3s-server-1
 ```
 
 `microvm.autostart` will ensure the microvm always starts up.
@@ -60,15 +60,15 @@ sudo systemctl start microvm@aorus-k3s-server-1
 
 To update and reboot a vm run (normally what you need to do):
 ```bash
-sudo microvm -Ru aorus-k3s-server-1
-sudo systemctl restart microvm@aorus-k3s-server-1 # Sometimes you need to run this
+sudo microvm -Ru k3s-server-1
+sudo systemctl restart microvm@k3s-server-1 # Sometimes you need to run this
 ```
 
 To remove a VM, run:
 ```bash
-sudo systemctl stop microvm@aorus-k3s-server-1
-sudo rm -rf /var/lib/microvms/aorus-k3s-server-1
-sudo rm /mnt/zpool_ssd/aorus/microvms/aorus-k3s-server-1.img
+sudo systemctl stop microvm@k3s-server-1
+sudo rm -rf /var/lib/microvms/k3s-server-1
+sudo rm /mnt/zpool_ssd/microvms/k3s-server-1.img
 ```
 
 

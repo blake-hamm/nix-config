@@ -15,7 +15,7 @@
       "--cluster-cidr=10.42.0.0/16" # Also configured in calico.yaml
     ];
     token = if (vm_name == "k3s-server-1") then "" else "my_token";
-    serverAddr = if (vm_name == "k3s-server-1") then "" else "192.168.69.31:6443";
+    serverAddr = if (vm_name == "k3s-server-1") then "" else "https://192.168.69.31:6443";
   };
   environment.systemPackages = with pkgs; [
     k3s

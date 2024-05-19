@@ -14,7 +14,7 @@
 
   # Microvm
   microvm = {
-    vcpu = 8;
+    vcpu = 4;
     mem = 8 * 1024; # 8gb
 
     volumes = [{

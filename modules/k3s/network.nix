@@ -4,7 +4,7 @@
   networking = {
     networkmanager.enable = lib.mkForce false;
     useNetworkd = true;
-    firewall.enable = true;
+    firewall.enable = lib.mkForce false; # Must be disabled for calico
     useDHCP = lib.mkForce false;
     enableIPv6 = lib.mkForce false;
   };
@@ -18,11 +18,4 @@
     linkConfig.RequiredForOnline = "yes";
     networkConfig.DHCP = "no";
   };
-
-  # k3s ports - https://docs.k3s.io/installation/requirements#networking
-  networking.firewall.allowedTCPPorts = [
-    6443
-    2379 # etcd
-    2380 # etcd
-  ];
 }

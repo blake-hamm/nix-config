@@ -11,6 +11,7 @@
       drawio
       etcher
       kubectl
+      kubernetes-helm
     ];
   };
 }

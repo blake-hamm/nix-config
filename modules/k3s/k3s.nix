@@ -16,7 +16,6 @@
     ];
     token = "my_token";
     serverAddr = "192.168.69.31:6443";
-    clusterInit = true;
   };
   environment.systemPackages = with pkgs; [
     k3s

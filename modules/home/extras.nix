@@ -12,6 +12,7 @@
       etcher
       kubectl
       kubernetes-helm
+      argocd
     ];
   };
 }

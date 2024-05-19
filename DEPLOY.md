@@ -51,7 +51,6 @@ sudo mkdir -p /mnt/zpool_ssd/microvms # Create .img directory
 sudo chown -R microvm:kvm /mnt/zpool_ssd/microvms # Give kvm group and microvm user ownership
 sudo chmod -R 755 /mnt/zpool_ssd/microvms
 sudo microvm -f git+file:///home/bhamm/nix-config -c k3s-server-1
-# sudo microvm -f github:blake-hamm/nix-config/feature/k3s -c aorus-k3s-server-1
 sudo systemctl start microvm@k3s-server-1
 ```
 

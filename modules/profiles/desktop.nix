@@ -3,6 +3,6 @@
     ./minimal.nix
     ../home
     ../hardware/sound.nix
-    ../hardware/nfs_client.nix
+    ../hardware/nfs-client.nix
   ];
 }

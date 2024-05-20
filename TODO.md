@@ -17,6 +17,9 @@
  - [x] Build minimal iso image with ssh
  - [x] Finalize nas (x2)
  - [x] Automate k3s node deployment with nix functional approach
+ - [ ] Setup precision laptop
+  - [ ] Laptop charging script systemd
+  - [ ] Laptop screen close
  - [ ] Finalize 3 node k3s with token and serverAddr
  - [x] Create NFS for persistent volume
  - [ ] Use vault secrets for ssh port and ip 192.168.X value

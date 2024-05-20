@@ -47,6 +47,9 @@
           nodeSpecialArgs.aorus = {
             host = "aorus";
           };
+          nodeSpecialArgs.precision = {
+            host = "precision";
+          };
         };
 
         framework = { name, nodes, pkgs, ... }: {
@@ -69,6 +72,16 @@
           };
           imports = [ ./hosts/aorus ];
         };
+
+        precision = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "precision" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.13";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/precision ];
+        };
       };
 
       # VM and iso configs without colmena
@@ -85,15 +98,6 @@
 
           # All other config
           otherConfig = {
-            # TEMP precision config
-            precision = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [ (import ./hosts/precision) ];
-              specialArgs = {
-                host = "precision";
-                inherit self inputs username;
-              };
-            };
             # ISO image
             minimal-iso = nixpkgs.lib.nixosSystem {
               inherit system;

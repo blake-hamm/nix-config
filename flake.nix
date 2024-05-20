@@ -85,6 +85,15 @@
 
           # All other config
           otherConfig = {
+            # TEMP precision config
+            precision = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [ (import ./hosts/precision) ];
+              specialArgs = {
+                host = "precision";
+                inherit self inputs username;
+              };
+            };
             # ISO image
             minimal-iso = nixpkgs.lib.nixosSystem {
               inherit system;

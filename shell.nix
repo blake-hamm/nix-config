@@ -5,6 +5,5 @@
 pkgs.mkShell {
   buildInputs = [
     pkgs.colmena
-    pkgs.sops
   ];
 }

@@ -10,6 +10,9 @@
     home.packages = with pkgs; [
       drawio
       etcher
+      kubectl
+      kubernetes-helm
+      argocd
     ];
   };
 }

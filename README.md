@@ -8,6 +8,9 @@ Nix
 - https://lazamar.co.uk/nix-versions/
 - https://noogle.dev/
 - https://nixos.org/manual/nix/stable/
+- https://nixos.wiki/wiki/Nix_by_example
+- https://teu5us.github.io/nix-lib.html
+- https://nixos.org/manual/nixpkgs/stable/
 
 Flake
 - https://mynixos.com/

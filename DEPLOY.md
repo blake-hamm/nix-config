@@ -47,20 +47,27 @@ It is best practice to keep vm flakes seperate from the host. This ensures rebui
 
 To create a vm for the first time run:
 ```bash
-sudo microvm -f git+file:///home/bhamm/repos/nix-config -c framework-vm-k3s-server-1
-sudo systemctl start microvm@framework-vm-k3s-server-1.service
+sudo mkdir -p /mnt/zpool_ssd/microvms # Create .img directory
+sudo chown -R microvm:kvm /mnt/zpool_ssd/microvms # Give kvm group and microvm user ownership
+sudo chmod -R 755 /mnt/zpool_ssd/microvms
+sudo microvm -f git+file:///home/bhamm/nix-config -c k3s-server-1
+sudo systemctl start microvm@k3s-server-1
 ```
 
 `microvm.autostart` will ensure the microvm always starts up.
 
 
 To update and reboot a vm run (normally what you need to do):
-`sudo microvm -Ru framework-vm-k3s-server-1`
+```bash
+sudo microvm -Ru k3s-server-1
+sudo systemctl restart microvm@k3s-server-1 # Sometimes you need to run this
+```
 
 To remove a VM, run:
 ```bash
-sudo systemctl stop microvm@framework-vm-k3s-server-1.service
-sudo rm -rf /var/lib/microvms/framework-vm-k3s-server-1
+sudo systemctl stop microvm@k3s-server-1
+sudo rm -rf /var/lib/microvms/k3s-server-1
+sudo rm /mnt/zpool_ssd/microvms/k3s-server-1.img
 ```
 
 
@@ -69,7 +76,7 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 `ssh bhamm@localhost -p 14185 -o StrictHostKeyChecking=no`
 
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
-`sudo nix run .#framework-vm-k3s-server-1`
+`sudo nix run .#nixosConfigurations.aorus-k3s-server-1.config.microvm.declaredRunner`
 
 ### ZFS
 *TODO: Use my ansible playbook instead(?)*

@@ -29,6 +29,7 @@
     let
       username = "bhamm";
       system = "x86_64-linux";
+      sshPort = 4185;
     in
     {
       # Bare metal
@@ -54,7 +55,7 @@
             tags = [ "framework" "local" "desktop" ];
             targetUser = "${username}";
             targetHost = "localhost";
-            targetPort = 4185;
+            targetPort = sshPort;
           };
           imports = [ ./hosts/framework ];
         };
@@ -64,39 +65,42 @@
             tags = [ "aorus" "server" ];
             targetUser = "${username}";
             targetHost = "192.168.69.12";
-            targetPort = 4185;
+            targetPort = sshPort;
           };
           imports = [ ./hosts/aorus ];
         };
       };
 
       # VM and iso configs without colmena
-      nixosConfigurations = {
+      nixosConfigurations =
+        let
+          pkgs = inputs.nixpkgs;
+          k3sVMs = import ./modules/k3s { inherit system inputs pkgs username; };
 
-        # VM
-        framework-vm-k3s-server-1 = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ (import ./hosts/k3s-server) ];
-          specialArgs = {
-            host_ssh_port = 14185;
-            host = "framework-vm-k3s-server-1";
-            inherit self inputs username;
+          # k3s VM config
+          k3sVMConfig = k3sVMs.buildConfig {
+            kube_vip = "192.168.69.20";
+            n = 3;
           };
-        };
 
-        # iso
-        minimal-iso = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-            (import ./hosts/iso)
-          ];
-          specialArgs = {
-            host = "minimal-iso";
-            inherit self inputs username;
+          # All other config
+          otherConfig = {
+            # ISO image
+            minimal-iso = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+                (import ./hosts/iso)
+              ];
+              specialArgs = {
+                host = "minimal-iso";
+                inherit self inputs username;
+              };
+            };
           };
-        };
+        in
+        # Combine config together
+        k3sVMConfig // otherConfig;
 
-      };
     };
 }

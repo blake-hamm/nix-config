@@ -51,6 +51,7 @@ sudo mkdir -p /mnt/zpool_ssd/microvms # Create .img directory
 sudo chown -R microvm:kvm /mnt/zpool_ssd/microvms # Give kvm group and microvm user ownership
 sudo chmod -R 755 /mnt/zpool_ssd/microvms
 sudo microvm -f git+file:///home/bhamm/nix-config -c k3s-server-1
+# Could do flake update/colmena apply w/ this github:blake-hamm/nix-config?dir=packages/laptop-charger (only when k3s secret figured out in agenix)
 sudo systemctl start microvm@k3s-server-1
 ```
 

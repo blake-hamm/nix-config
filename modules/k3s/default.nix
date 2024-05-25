@@ -3,6 +3,7 @@ let
   buildVM = { kube_vip, k3s_role, n }:
     let
       i = toString n;
+      k = { k3s_role }: if k3s_role == "server" then 2 else 3;
       vm_name = "k3s-${k3s_role}-${i}";
     in
     {
@@ -11,7 +12,7 @@ let
         modules = [ (import ./system.nix) ];
         specialArgs = {
           host = vm_name;
-          inherit inputs username vm_name i kube_vip k3s_role;
+          inherit inputs username vm_name i k kube_vip k3s_role;
         };
       };
     };

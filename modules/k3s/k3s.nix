@@ -1,10 +1,10 @@
-{ pkgs, kube_vip, vm_name, ... }:
+{ k3s_role, pkgs, kube_vip, vm_name, ... }:
 {
   systemd.enableUnifiedCgroupHierarchy = false;
   services.k3s = {
     enable = true;
     clusterInit = true;
-    role = "server";
+    role = "${k3s_role}";
     extraFlags = toString [
       "--debug"
       "--disable=traefik"

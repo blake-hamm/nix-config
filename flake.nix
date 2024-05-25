@@ -97,8 +97,14 @@
           k3sVMs = import ./modules/k3s { inherit system inputs pkgs username; };
 
           # k3s VM config
-          k3sVMConfig = k3sVMs.buildConfig {
+          k3sServerVMConfig = k3sVMs.buildConfig {
             kube_vip = "192.168.69.20";
+            k3s_role = "server";
+            n = 3;
+          };
+          k3sAgentVMConfig = k3sVMs.buildConfig {
+            kube_vip = "192.168.69.20";
+            k3s_role = "agent";
             n = 3;
           };
 
@@ -119,7 +125,7 @@
           };
         in
         # Combine config together
-        k3sVMConfig // otherConfig;
+        k3sServerVMConfig // k3sAgentVMConfig // otherConfig;
 
     };
 }

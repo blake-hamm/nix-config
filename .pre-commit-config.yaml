@@ -1,16 +1,16 @@
 repos:
   - repo: https://github.com/nix-community/nixpkgs-fmt
-    rev: master
+    rev: v1.3.0
     hooks:
       - id: nixpkgs-fmt
   - repo: https://github.com/Lucas-C/pre-commit-hooks
-    rev: v1.5.1
+    rev: v1.5.5
     hooks:
       - id: forbid-tabs
       - id: remove-tabs
         args: [--whitespaces-count, '2'] # defaults to: 4
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
       - id: check-case-conflict
       - id: check-executables-have-shebangs
@@ -24,11 +24,11 @@ repos:
       - id: mixed-line-ending
       - id: trailing-whitespace
   - repo: https://github.com/google/yamlfmt
-    rev: v0.10.0
+    rev: v0.12.1
     hooks:
       - id: yamlfmt
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.16.1
+    rev: v8.18.2
     hooks:
       - id: gitleaks
   - repo: https://github.com/sirwart/ripsecrets
@@ -36,6 +36,6 @@ repos:
     hooks:
       - id: ripsecrets
   - repo: https://github.com/scop/pre-commit-shfmt
-    rev: v3.7.0-1
+    rev: v3.8.0-1
     hooks:
       - id: shfmt

@@ -11,45 +11,45 @@ in
   users.users.${username}.password = ""; # TODO: Replace with vault
   services.udev.extraRules = ''
     SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="${mac_address}", NAME="enp0s4"
-  ''
+  '';
 
-    swapDevices = [{
-  device = "/var/lib/swapfile";
-  size = 8 * 1024;
-}];
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 8 * 1024;
+  }];
 
-# Microvm
-microvm = {
-vcpu = 4;
-mem = 8 * 1024; # 8gb
-balloonMem = 2 * 1024;
+  # Microvm
+  microvm = {
+    vcpu = 4;
+    mem = 8 * 1024; # 8gb
+    balloonMem = 2 * 1024;
 
-volumes = [{
-mountPoint = "/var";
-image = "/mnt/zpool_ssd/microvms/${vm_name}.img";
-# Requires permissions (replace with ansible?):
-# sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
-# sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
-size = 51200; # 50 gb
-}];
+    volumes = [{
+      mountPoint = "/var";
+      image = "/mnt/zpool_ssd/microvms/${vm_name}.img";
+      # Requires permissions (replace with ansible?):
+      # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
+      # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
+      size = 51200; # 50 gb
+    }];
 
-shares = [{
-#proto = "9p";
-proto = "virtiofs";
-tag = "ro-store";
-source = "/nix/store";
-mountPoint = "/nix/.ro-store";
-}];
+    shares = [{
+      #proto = "9p";
+      proto = "virtiofs";
+      tag = "ro-store";
+      source = "/nix/store";
+      mountPoint = "/nix/.ro-store";
+    }];
 
-interfaces = [
-{
-type = "tap";
-id = "vm-${vm_name}";
-mac = mac_address; # Add a rule to ethernet interface
-}
-];
+    interfaces = [
+      {
+        type = "tap";
+        id = "vm-${vm_name}";
+        mac = mac_address; # Add a rule to ethernet interface
+      }
+    ];
 
-hypervisor = "qemu";
-socket = "control.socket";
-};
+    hypervisor = "qemu";
+    socket = "control.socket";
+  };
 }

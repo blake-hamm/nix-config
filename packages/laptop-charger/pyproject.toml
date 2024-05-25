@@ -7,8 +7,9 @@ readme = "README.md"
 packages = [{include = "laptop_charger", from="src"}]
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.10"
 python-kasa = "^0.6.2.1"
+cryptography = "<=41.0.4"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -22,3 +23,6 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 log_cli = true
 log_cli_level = "INFO"
+
+[tool.poetry.scripts]
+manage_charger = 'laptop_charger.main:main'

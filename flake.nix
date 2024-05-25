@@ -23,6 +23,12 @@
     # MicroVM
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
+
+    # laptop-charger (in packages dir)
+    manage_charger = {
+      url = "github:blake-hamm/nix-config?ref=feature/precision&dir=packages/laptop-config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, self, ... } @ inputs:
@@ -39,7 +45,7 @@
             inherit system;
           };
           specialArgs = {
-            inherit self inputs username;
+            inherit self inputs username system;
           };
           nodeSpecialArgs.framework = {
             host = "framework";

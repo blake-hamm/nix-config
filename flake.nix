@@ -26,7 +26,7 @@
 
     # laptop-charger (in packages dir)
     manage_charger = {
-      url = "github:blake-hamm/nix-config?ref=feature/precision&dir=packages/laptop-config";
+      url = "github:blake-hamm/nix-config?ref=feature/precision&dir=packages/laptop-charger";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

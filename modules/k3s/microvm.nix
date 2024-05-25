@@ -1,4 +1,4 @@
-{ inputs, username, vm_name, i, ... }:
+{ inputs, username, vm_name, k, i, ... }:
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -38,7 +38,7 @@
       {
         type = "tap";
         id = "vm-${vm_name}";
-        mac = "02:00:00:00:00:0${i}";
+        mac = "02:00:00:00:00:${k}${i}";
       }
     ];
 

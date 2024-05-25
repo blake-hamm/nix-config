@@ -1,3 +1,4 @@
+# Copied from - https://github.com/nix-community/poetry2nix/blob/master/templates/app/flake.nix
 {
   description = "Application packaged using poetry2nix";
 

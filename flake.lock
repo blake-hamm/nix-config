@@ -120,11 +120,11 @@
       },
       "locked": {
         "dir": "packages/laptop-charger",
-        "lastModified": 1716649507,
-        "narHash": "sha256-B2/8pt22LPOumGg/BxX2coQFJyCL5kaVc0u5XVK5wuU=",
+        "lastModified": 1716650386,
+        "narHash": "sha256-kg+Ix4KHlcK3rehf5IuPINgPpodGBb/c38ONRHsDCSM=",
         "owner": "blake-hamm",
         "repo": "nix-config",
-        "rev": "932103e8e2663dc1a4e010f79fbb1e8019eb0368",
+        "rev": "4e9b4e142e830b9596fefe66b1af11ecbe54c08f",
         "type": "github"
       },
       "original": {

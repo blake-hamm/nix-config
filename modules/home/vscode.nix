@@ -6,9 +6,11 @@
   home-manager.users.${username} = {
     programs.vscode = {
       enable = true;
+      package = pkgs.vscodium;
       extensions = with pkgs.vscode-extensions; [
-        catppuccin.catppuccin-vsc
-        bbenoist.nix
+        ms-python.python
+        ms-python.isort
+        ms-python.black-formatter
         jnoortheen.nix-ide
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons

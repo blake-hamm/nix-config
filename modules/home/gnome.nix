@@ -19,6 +19,7 @@
 
   # Home manager config
   home-manager.users.${username} = {
+    imports = [ inputs.catppuccin.homeManagerModules.catppuccin ];
     gtk = {
       enable = true;
       catppuccin.enable = true;

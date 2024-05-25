@@ -23,6 +23,12 @@
     # MicroVM
     microvm.url = "github:astro/microvm.nix";
     microvm.inputs.nixpkgs.follows = "nixpkgs";
+
+    # laptop-charger (in packages dir)
+    manage_charger = {
+      url = "github:blake-hamm/nix-config?dir=packages/laptop-charger";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, self, ... } @ inputs:
@@ -39,13 +45,16 @@
             inherit system;
           };
           specialArgs = {
-            inherit self inputs username;
+            inherit self inputs username system;
           };
           nodeSpecialArgs.framework = {
             host = "framework";
           };
           nodeSpecialArgs.aorus = {
             host = "aorus";
+          };
+          nodeSpecialArgs.precision = {
+            host = "precision";
           };
         };
 
@@ -68,6 +77,16 @@
             targetPort = sshPort;
           };
           imports = [ ./hosts/aorus ];
+        };
+
+        precision = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "precision" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.13";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/precision ];
         };
       };
 

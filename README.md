@@ -15,6 +15,7 @@ Nix
 Flake
 - https://mynixos.com/
 - https://flakehub.com/
+- https://github.com/NixOS/nix/blob/master/src/nix/flake.md
 
 Home Manager
 - https://home-manager-options.extranix.com/

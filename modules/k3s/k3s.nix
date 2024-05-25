@@ -3,7 +3,7 @@
   systemd.enableUnifiedCgroupHierarchy = false;
   services.k3s = {
     enable = true;
-    clusterInit = true;
+    clusterInit = if k3s_role == "server" then true else false;
     role = "${k3s_role}";
     extraFlags = toString [
       "--debug"

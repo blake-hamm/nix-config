@@ -16,6 +16,7 @@
   microvm = {
     vcpu = 4;
     mem = 8 * 1024; # 8gb
+    balloonMem = 2 * 1024;
 
     volumes = [{
       mountPoint = "/var";

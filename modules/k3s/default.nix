@@ -3,7 +3,7 @@ let
   buildVM = { kube_vip, k3s_role, n }:
     let
       i = toString n;
-      k = { k3s_role }: if k3s_role == "server" then 2 else 3;
+      k = if k3s_role == "server" then "2" else "3";
       vm_name = "k3s-${k3s_role}-${i}";
     in
     {

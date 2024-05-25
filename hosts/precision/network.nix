@@ -21,7 +21,7 @@
     networks = {
       # Built-in Ethernet nic
       "10-eno1" = {
-        matchConfig.Name = "eno1";
+        matchConfig.Name = [ "eno1" "vm-*" ];
         networkConfig = {
           Bridge = "br0";
         };

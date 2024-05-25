@@ -79,6 +79,22 @@ In case you need to access a vm, you can ssh into the host and then ssh into the
 For troubleshooting a new vm, you can change `proto = "9p";` in the vm config and run the following command:
 `sudo nix run .#nixosConfigurations.aorus-k3s-server-1.config.microvm.declaredRunner`
 
+### k3s
+First, setup the first server and ssh into. Then, you need to follow [these instructions](https://github.com/blake-hamm/k3s-config/blob/main/DEPLOY.md) to get the base cluster ready.
+
+Once the cluster is ready, you can copy the kubectl config to your local. To view the file, run:
+```bash
+sudo cat /etc/rancher/k3s/k3s.yaml
+```
+and change the urls with your kube-vip url. Then, you should be able to view your cluster in your local.
+
+Without agenix or nix sops setup, we need to take care to distribute our k3s token manually to each machine before setting up any additional nodes. Oncer the cluster us up and running, view the k3s token:
+```bash
+sudo cat /var/lib/rancher/k3s/server/token
+```
+Then, replace `my_token` in `./modules/k3s/k3s.nix` with the value of this token (only on the vm host machine). Then, you can start the rest of the nodes and they will join the cluster.
+
+
 ### ZFS
 *TODO: Use my ansible playbook instead(?)*
 Generally following - https://github.com/nmasur/dotfiles/blob/b546d5b43ab8ff148532a65a43d0f3ad50582e33/docs/zfs.md

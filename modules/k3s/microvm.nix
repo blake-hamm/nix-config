@@ -37,7 +37,7 @@
     interfaces = [
       {
         type = "tap";
-        id = "vm-k3s-${i}";
+        id = "vm-${vm_name}";
         mac = "02:00:00:00:00:0${i}";
       }
     ];

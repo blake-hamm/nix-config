@@ -1,4 +1,4 @@
-{ system, inputs, ... }:
+{ pkgs, inputs, system, ... }:
 {
   services.logind.lidSwitch = "ignore";
 

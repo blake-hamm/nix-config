@@ -1,4 +1,4 @@
-{ lib, i, ... }:
+{ lib, k, i, ... }:
 {
   # Network
   networking = {
@@ -12,7 +12,7 @@
   systemd.network.networks."10-lan" = {
     matchConfig.Type = "ether";
     # TODO: Paramaterize the below static ip better
-    address = [ "192.168.69.3${i}/24" ]; # Will conflict in cluster
+    address = [ "192.168.69.${k}${i}/24" ];
     gateway = [ "192.168.69.1" ];
     dns = [ "192.168.69.1" ];
     linkConfig.RequiredForOnline = "yes";

@@ -1,4 +1,7 @@
-{ inputs, username, vm_name, i, ... }:
+{ inputs, username, vm_name, k, i, ... }:
+let
+  mac_address = "02:00:00:00:00:${k}${i}";
+in
 {
   imports = [
     inputs.microvm.nixosModules.microvm
@@ -6,6 +9,9 @@
 
   # Config
   users.users.${username}.password = ""; # TODO: Replace with vault
+  services.udev.extraRules = ''
+    SUBSYSTEM=="net", ACTION=="add", ATTR{address}=="${mac_address}", NAME="enp0s4"
+  '';
 
   swapDevices = [{
     device = "/var/lib/swapfile";
@@ -16,6 +22,7 @@
   microvm = {
     vcpu = 4;
     mem = 8 * 1024; # 8gb
+    balloonMem = 2 * 1024;
 
     volumes = [{
       mountPoint = "/var";
@@ -37,8 +44,8 @@
     interfaces = [
       {
         type = "tap";
-        id = "vm-k3s-${i}";
-        mac = "02:00:00:00:00:0${i}";
+        id = "vm-${vm_name}";
+        mac = mac_address; # Add a rule to ethernet interface
       }
     ];
 

@@ -10,7 +10,7 @@
         toString [
           "--debug"
           "--disable=traefik"
-          "--disable=servicellb"
+          "--disable=servicelb"
           "--flannel-backend=none"
           "--disable-network-policy"
           "--tls-san=${kube_vip}" # Also configured in kube-vip

@@ -9,5 +9,6 @@
     ./vscode.nix
     ./firefox.nix
     ./extras.nix
+    ./uhk.nix
   ];
 }

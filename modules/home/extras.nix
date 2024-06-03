@@ -9,10 +9,10 @@
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       drawio
-      etcher
-      kubectl
-      kubernetes-helm
-      argocd
+      # etcher
+      # kubectl
+      # kubernetes-helm
+      # argocd
     ];
   };
 }

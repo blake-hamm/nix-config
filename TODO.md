@@ -30,21 +30,29 @@
 - [x] NixOS config with security and backups
 - [x] NixOS on all machines
 - [x] NFS storage available securely on network
-- [ ] k3s running with basic apps
+- [x] k3s running with basic apps
 
 ## Next steps after are:
  - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
-- Run home manager command (without sudo)
-- Automated CI/CD with argo events/workflows connected to SCM (monorepo)
-    - Touchless deployment where: PR deploys to dev, merge to main deploys to prod
-- Deploy vault and refactor more securely
-- Make "prod" k3s
-- Local (coredns) and global (cloudflare) dns - refactor project to url's
-- More k3s apps with middleware
-- Wireguard setup
-- Setup fingerprint
+ - [ ] Run home manager command (without sudo)
+ - [ ] Automated CI/CD with argo events/workflows connected to SCM (monorepo)
+   - [ ] Touchless deployment where: PR deploys to dev, merge to main deploys to prod
+ - [ ] Global (cloudflare) dns - refactor project to url's
+ - [ ] Wireguard setup
+ - [ ] Setup fingerprint
  - [ ] Finalize laptop server nixos cluster
+ - [ ] Try hyperland
+
+## Stretch tasks:
+ - [ ] Create nixos router
+    - https://github.com/chayleaf/nixos-router
+    - https://discourse.nixos.org/t/guide-to-nixos-based-router-2023-part-2-software/35727
+    - Many more examples on duckduckgo search
+ - [ ] Leverage VLANs
 
 # Keep in mind
 - For now, document manual deployment (cli) steps
 - Is there a way to template out colmena, nixosConfigurations and homeManager all in one go? Then, I have multiple options to run the same thing? Or, can I just use colmena for everything and I just need to sort out the cli commands to create an image/deploy microvm?
+
+*At some point, let's refactor nix-config and k3s-config into a monorepo.*
+  - Once a monorepo is sorted, let's automate a cluster deployment to k3s machines

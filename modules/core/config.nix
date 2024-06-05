@@ -24,5 +24,5 @@
   # Other system config
   services.printing.enable = true;
   security.sudo.wheelNeedsPassword = false;
-  system.stateVersion = "23.11";
+  system.stateVersion = "24.05";
 }

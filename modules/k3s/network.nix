@@ -7,7 +7,6 @@
     firewall.enable = lib.mkForce false; # Must be disabled for calico
     useDHCP = lib.mkForce false;
     enableIPv6 = lib.mkForce false;
-    interfaces.enp0s4.mtu = 1450;
   };
   systemd.network.enable = true;
   systemd.network.networks."10-lan" = {

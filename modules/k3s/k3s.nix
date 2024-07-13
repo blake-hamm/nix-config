@@ -24,5 +24,6 @@
     k3s
     argocd
     kubernetes-helm
+    nfs-utils
   ];
 }

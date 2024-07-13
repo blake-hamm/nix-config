@@ -11,6 +11,7 @@ Nix
 - https://nixos.wiki/wiki/Nix_by_example
 - https://teu5us.github.io/nix-lib.html
 - https://nixos.org/manual/nixpkgs/stable/
+- https://nixos-and-flakes.thiscute.world/
 
 Flake
 - https://mynixos.com/

@@ -9,7 +9,7 @@ packages = [{include = "laptop_charger", from="src"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 python-kasa = "^0.6.2.1"
-cryptography = "41.0.6"
+cryptography = "42.0.4"
 
 
 [tool.poetry.group.dev.dependencies]

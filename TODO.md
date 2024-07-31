@@ -49,6 +49,7 @@
     - https://discourse.nixos.org/t/guide-to-nixos-based-router-2023-part-2-software/35727
     - Many more examples on duckduckgo search
  - [ ] Leverage VLANs
+ - [ ] Switch to snapraid + mergerfs for sata ssd pool and more storage
 
 # Keep in mind
 - For now, document manual deployment (cli) steps

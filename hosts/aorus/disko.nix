@@ -8,7 +8,7 @@
   boot.kernelParams = [ "nohibernate" ];
   boot.supportedFilesystems = [ "zfs" ];
   boot.zfs.forceImportRoot = false;
-  boot.zfs.extraPools = [ "zpool_ssd" "zpool_hdd" ];
+  boot.zfs.extraPools = [ "zpool_ssd" ];
   boot.extraModprobeConfig = ''
     options zfs zfs_autoimport_disable=0
   '';

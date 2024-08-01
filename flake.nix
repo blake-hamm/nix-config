@@ -116,6 +116,9 @@
               modules = [
                 "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
                 (import ./hosts/iso)
+                {
+                  nixpkgs.config.allowBroken = true;
+                }
               ];
               specialArgs = {
                 host = "minimal-iso";

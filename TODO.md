@@ -33,6 +33,10 @@
 - [x] k3s running with basic apps
 
 ## Next steps after are:
+ - [ ] Setup opnsense vm w/ pcie passthrough
+      - https://mynixos.com/nixpkgs/options/virtualisation.libvirtd
+      - https://nixos.wiki/wiki/NixOps/Virtualization
+      - https://flakehub.com/flake/AshleyYakeley/NixVirt
  - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
  - [ ] Run home manager command (without sudo)
  - [ ] Automated CI/CD with argo events/workflows connected to SCM (monorepo)
@@ -49,7 +53,7 @@
     - https://discourse.nixos.org/t/guide-to-nixos-based-router-2023-part-2-software/35727
     - Many more examples on duckduckgo search
  - [ ] Leverage VLANs
- - [ ] Switch to snapraid + mergerfs for sata ssd pool and more storage
+ - [ ] Switch zfs to snapraid + mergerfs for sata ssd pool and more storage
 
 # Keep in mind
 - For now, document manual deployment (cli) steps

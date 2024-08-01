@@ -4,7 +4,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/disk/by-id/ata-KBG30ZMV256G_TOSHIBA_39PPC2SSPZXP";
+        device = "/dev/disk/by-id/ata-KBG30ZMV256G_TOSHIBA_39PPC2SSPZXP";
         type = "disk";
         content = {
           type = "gpt";

@@ -125,6 +125,17 @@
                 inherit self inputs username;
               };
             };
+            # temp example
+            temp = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                (import ./hosts/elitebook)
+              ];
+              specialArgs = {
+                host = "elitebook";
+                inherit self inputs username system;
+              };
+            };
           };
         in
         # Combine config together

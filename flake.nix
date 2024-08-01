@@ -133,7 +133,7 @@
               ];
               specialArgs = {
                 host = "elitebook";
-                inherit self inputs username;
+                inherit self inputs username system;
               };
             };
           };

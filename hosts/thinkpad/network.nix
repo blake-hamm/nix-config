@@ -55,7 +55,7 @@
       "10-br0" = {
         matchConfig.Name = "br0";
         bridgeConfig = { };
-        address = [ "192.168.69.15/24" ];
+        address = [ "192.168.69.14/24" ];
         gateway = [ "192.168.69.1" ];
         dns = [ "192.168.69.1" ];
         linkConfig.RequiredForOnline = "yes";

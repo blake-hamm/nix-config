@@ -136,6 +136,17 @@
                 inherit self inputs username system;
               };
             };
+            # thinkpad example
+            thinkpad = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                (import ./hosts/thinkpad)
+              ];
+              specialArgs = {
+                host = "thinkpad";
+                inherit self inputs username system;
+              };
+            };
           };
         in
         # Combine config together

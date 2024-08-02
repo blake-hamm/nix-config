@@ -25,9 +25,9 @@ in
     balloonMem = 2 * 1024;
 
     volumes = [{
-      mountPoint = "/var";
+      mountPoint = "/";
       image = "/mnt/zpool_ssd/microvms/${vm_name}.img";
-      # Requires permissions (replace with ansible?):
+      # Requires permissions (replace zfs management with ansible?):
       # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
       # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
       size = 51200; # 50 gb

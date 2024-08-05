@@ -56,6 +56,12 @@
           nodeSpecialArgs.precision = {
             host = "precision";
           };
+          nodeSpecialArgs.thinkpad = {
+            host = "thinkpad";
+          };
+          nodeSpecialArgs.elitebook = {
+            host = "elitebook";
+          };
         };
 
         framework = { name, nodes, pkgs, ... }: {
@@ -87,6 +93,26 @@
             targetPort = sshPort;
           };
           imports = [ ./hosts/precision ];
+        };
+
+        thinkpad = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "thinkpad" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.14";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/thinkpad ];
+        };
+
+        elitebook = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "elitebook" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.15";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/elitebook ];
         };
       };
 
@@ -123,28 +149,6 @@
               specialArgs = {
                 host = "minimal-iso";
                 inherit self inputs username;
-              };
-            };
-            # elitebook example
-            elitebook = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                (import ./hosts/elitebook)
-              ];
-              specialArgs = {
-                host = "elitebook";
-                inherit self inputs username system;
-              };
-            };
-            # thinkpad example
-            thinkpad = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                (import ./hosts/thinkpad)
-              ];
-              specialArgs = {
-                host = "thinkpad";
-                inherit self inputs username system;
               };
             };
           };

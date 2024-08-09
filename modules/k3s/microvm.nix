@@ -24,14 +24,24 @@ in
     mem = 8 * 1024; # 8gb
     balloonMem = 2 * 1024;
 
-    volumes = [{
-      mountPoint = "/var";
-      image = "/mnt/zpool_ssd/microvms/${vm_name}.img";
-      # Requires permissions (replace with ansible?):
-      # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
-      # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
-      size = 51200; # 50 gb
-    }];
+    volumes = [
+      {
+        mountPoint = "/var";
+        image = "/mnt/zpool_ssd/microvms/${vm_name}_var.img";
+        # Requires permissions (replace with ansible?):
+        # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
+        # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
+        size = 20480; # 20 gb
+      }
+      {
+        mountPoint = "/etc";
+        image = "/mnt/zpool_ssd/microvms/${vm_name}_etc.img";
+        # Requires permissions (replace with ansible?):
+        # sudo chown -R microvm:kvm /mnt/zpool_ssd/aorus/microvms
+        # sudo chmod -R 755 /mnt/zpool_ssd/aorus/microvms
+        size = 20480; # 20 gb
+      }
+    ];
 
     shares = [{
       #proto = "9p";

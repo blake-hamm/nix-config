@@ -56,6 +56,12 @@
           nodeSpecialArgs.precision = {
             host = "precision";
           };
+          nodeSpecialArgs.thinkpad = {
+            host = "thinkpad";
+          };
+          nodeSpecialArgs.elitebook = {
+            host = "elitebook";
+          };
         };
 
         framework = { name, nodes, pkgs, ... }: {
@@ -88,6 +94,26 @@
           };
           imports = [ ./hosts/precision ];
         };
+
+        thinkpad = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "thinkpad" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.14";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/thinkpad ];
+        };
+
+        elitebook = { name, nodes, pkgs, ... }: {
+          deployment = {
+            tags = [ "elitebook" "server" ];
+            targetUser = "${username}";
+            targetHost = "192.168.69.15";
+            targetPort = sshPort;
+          };
+          imports = [ ./hosts/elitebook ];
+        };
       };
 
       # VM and iso configs without colmena
@@ -116,6 +142,9 @@
               modules = [
                 "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
                 (import ./hosts/iso)
+                {
+                  nixpkgs.config.allowBroken = true;
+                }
               ];
               specialArgs = {
                 host = "minimal-iso";

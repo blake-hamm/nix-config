@@ -31,7 +31,7 @@ Once your disk is setup, you can integrate the disko config into your flake proj
 
 Next, you need to put your hardware config into your git project. To generate a hardware config, run `nixos-generate-config --no-filesystems --show-hardware-config` and copy it to your host configs. Finish your host config using standard flake (without colmena).
 
-*TODO: Use nixos anywhere*
+*TODO: Use nixos anywhere - potential way to run with colmena - https://github.com/zhaofengli/colmena/issues/60*
 
 After host config is finalized and the `flake.nix` is updated, copy this repo to `/mnt/nix-config` and install with `sudo nixos-install --no-root-passwd --flake /mnt/nix-config#the-machine`.
 

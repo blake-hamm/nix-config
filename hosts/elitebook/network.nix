@@ -32,16 +32,16 @@
     };
     networks = {
       # Usb Ethernet 2.5g nic as primary
-      "10-enp0s20f0u4" = {
-        matchConfig.Name = "enp0s20f0u4";
+      "10-enp0s20f0u2" = {
+        matchConfig.Name = "enp0s20f0u2";
         networkConfig = {
           Bond = "bond0";
           PrimarySlave = true;
         };
       };
       # Built-in Ethernet nic
-      "10-eno1" = {
-        matchConfig.Name = "eno1";
+      "10-enp0s31f6" = {
+        matchConfig.Name = "enp0s31f6";
         networkConfig.Bond = "bond0";
       };
       # Bond network
@@ -55,7 +55,7 @@
       "10-br0" = {
         matchConfig.Name = "br0";
         bridgeConfig = { };
-        address = [ "192.168.69.13/24" ];
+        address = [ "192.168.69.15/24" ];
         gateway = [ "192.168.69.1" ];
         dns = [ "192.168.69.1" ];
         linkConfig.RequiredForOnline = "yes";

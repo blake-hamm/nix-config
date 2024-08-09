@@ -29,6 +29,9 @@
       url = "github:blake-hamm/nix-config?dir=packages/laptop-charger";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Sops nix
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = { nixpkgs, self, ... } @ inputs:

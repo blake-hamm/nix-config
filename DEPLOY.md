@@ -109,3 +109,12 @@ sudo zpool create -f  -m /mnt/zpool_ssd -o ashift=12 zpool_ssd mirror \
   /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009C8 \
   /dev/disk/by-id/ata-PNY_CS900_2TB_SSD_PNY225122122301009CB
 ```
+
+### SOPS
+```bash
+# generate new age key from private ssh key
+ nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+
+# get a public key of ~/.config/sops/age/keys.txt
+nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+```

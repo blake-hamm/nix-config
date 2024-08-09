@@ -33,10 +33,15 @@
 - [x] k3s running with basic apps
 
 ## Next steps after are:
+ - [ ] Run k3s on bare metal
+    - [ ] Setup sops-nix for k3s token
+    - [ ] Alter k3s module for bare metal
+    - [ ] Remove microvm setup
  - [ ] Setup opnsense vm w/ pcie passthrough
       - https://mynixos.com/nixpkgs/options/virtualisation.libvirtd
       - https://nixos.wiki/wiki/NixOps/Virtualization
       - https://flakehub.com/flake/AshleyYakeley/NixVirt
+      - https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs/resources/domain#sharing-filesystem-between-libvirt-host-and-guest
  - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
  - [ ] Run home manager command (without sudo)
  - [ ] Automated CI/CD with argo events/workflows connected to SCM (monorepo)
@@ -54,6 +59,8 @@
     - Many more examples on duckduckgo search
  - [ ] Leverage VLANs
  - [ ] Switch zfs to snapraid + mergerfs for sata ssd pool and more storage
+ - [ ] Consider replacing microvm with libvirtd + https://github.com/nix-community/nixos-generators
+ - [ ] Consider nixos on debian
 
 # Keep in mind
 - For now, document manual deployment (cli) steps

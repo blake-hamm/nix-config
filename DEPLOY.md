@@ -113,8 +113,17 @@ sudo zpool create -f  -m /mnt/zpool_ssd -o ashift=12 zpool_ssd mirror \
 ### SOPS
 ```bash
 # generate new age key from private ssh key
- nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
+nix run nixpkgs#ssh-to-age -- -private-key -i ~/.ssh/id_ed25519 > ~/.config/sops/age/keys.txt
 
 # get a public key of ~/.config/sops/age/keys.txt
 nix shell nixpkgs#age -c age-keygen -y ~/.config/sops/age/keys.txt
+
+# One liner to get age from ssh
+nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
+
+# To create or edit a secrets.yaml
+sops secrets.yaml
+
+# To update my secrets.yaml based on a new key in .sops.yaml
+sops updatekeys secrets.yaml
 ```

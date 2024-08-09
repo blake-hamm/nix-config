@@ -11,11 +11,11 @@
   sops.defaultSopsFormat = "yaml";
 
   # sops.age.keyFile = "/home/bhamm/.config/sops/age/keys.txt";
-  sops.age.sshKeyPaths = [ "/home/bhamm/.ssh/id_ed25519" ];
+  sops.age.sshKeyPaths = [ "/home/bhamm/.ssh/id_ed25519" "/etc/ssh/ssh_host_ed25519_key" ];
 
   sops.secrets.example-key = { };
   sops.secrets."myservice/my_subdir/my_secret" = {
-    owner = "bhamm";
+    # owner = "bhamm";
   };
 
   # systemd.services."sometestservice" = {

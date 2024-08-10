@@ -5,8 +5,7 @@
     ./disko.nix
     ./../../modules/hardware/nfs-client.nix
     ./network.nix
-    # ./vms.nix
     ./../../modules/hardware/laptop-server.nix
-    ./../../modules/k3s/sops.nix
+    ./../../modules/metal/k3s.nix
   ];
 }

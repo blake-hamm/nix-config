@@ -2,6 +2,7 @@
 
 keys:
   - &framework age1l37eugsfaaetyr7l9zqj6usmg0xkvfnywvll73ml6jyy85u5ffjq85mg3g
+  - &precision age15jvkxjmjm3le94hgg88khve2cfvsfqhj2zxn4lugz7v2tufqauvstzg7dc
   - &thinkpad age1xvjk58qg60uqlvxssdz5dt84lqv8flqthyz9lzgflqlel24mtdpq36805n
   - &elitebook age1rmewuurgu9dgffffp927laseps0yearsdyvxscage2gc6vae8ekq9ly5lz
 creation_rules:
@@ -9,5 +10,6 @@ creation_rules:
     key_groups:
       - age:
           - *framework
+          - *precision
           - *thinkpad
           - *elitebook

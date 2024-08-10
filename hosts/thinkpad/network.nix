@@ -14,7 +14,7 @@
       "10-bond0" = {
         netdevConfig = {
           Kind = "bond";
-          Name = "enp0s4"; #bond0 preferred
+          Name = "enp0s4"; #bond0 preferred (required for kube-vip)
         };
         bondConfig = {
           Mode = "active-backup";

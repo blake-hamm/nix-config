@@ -1,4 +1,4 @@
-{ pkgs, kube_vip, host, config, lib, ... }:
+{ pkgs, host, config, lib, ... }:
 {
   systemd.enableUnifiedCgroupHierarchy = false;
   services.k3s = {
@@ -11,11 +11,11 @@
       "--disable=servicelb"
       "--flannel-backend=none"
       "--disable-network-policy"
-      "--tls-san=${kube_vip}" # Also configured in kube-vip
+      "--tls-san=192.168.69.20" # Also configured in kube-vip
       "--cluster-cidr=10.42.0.0/16" # Also configured in calico.yaml
       "--kube-proxy-arg=ipvs-strict-arp=true" # Required for metallb
     ];
-    serverAddr = "https://${kube_vip}:6443";
+    serverAddr = "https://192.168.69.20:6443";
   };
   environment.systemPackages = with pkgs; [
     k3s

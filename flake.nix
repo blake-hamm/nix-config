@@ -61,7 +61,6 @@
           };
           nodeSpecialArgs.thinkpad = {
             host = "thinkpad";
-            kube_vip = "192.168.69.20";
           };
           nodeSpecialArgs.elitebook = {
             host = "elitebook";

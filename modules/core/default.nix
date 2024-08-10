@@ -8,5 +8,6 @@
     # ./backups.nix # TODO: backup zpools
     ./terminal.nix
     ./git.nix
+    ./sops.nix
   ];
 }

@@ -61,6 +61,7 @@
           };
           nodeSpecialArgs.thinkpad = {
             host = "thinkpad";
+            kube_vip = "192.168.69.20";
           };
           nodeSpecialArgs.elitebook = {
             host = "elitebook";
@@ -100,7 +101,7 @@
 
         thinkpad = { name, nodes, pkgs, ... }: {
           deployment = {
-            tags = [ "thinkpad" "server" ];
+            tags = [ "thinkpad" "server" "k3s" ];
             targetUser = "${username}";
             targetHost = "192.168.69.14";
             targetPort = sshPort;

@@ -10,18 +10,11 @@
   systemd.network = {
     enable = true;
     netdevs = {
-      # Bridge for VM's and host
-      "10-br0" = {
-        netdevConfig = {
-          Kind = "bridge";
-          Name = "br0";
-        };
-      };
       # Bond network
       "10-bond0" = {
         netdevConfig = {
           Kind = "bond";
-          Name = "bond0";
+          Name = "enp0s4"; #bond0 preferred
         };
         bondConfig = {
           Mode = "active-backup";
@@ -35,26 +28,18 @@
       "10-enp0s20f0u2" = {
         matchConfig.Name = "enp0s20f0u2";
         networkConfig = {
-          Bond = "bond0";
+          Bond = "enp0s4";
           PrimarySlave = true;
         };
       };
       # Built-in Ethernet nic
       "10-enp0s31f6" = {
         matchConfig.Name = "enp0s31f6";
-        networkConfig.Bond = "bond0";
+        networkConfig.Bond = "enp0s4";
       };
       # Bond network
       "10-bond0" = {
-        matchConfig.Name = [ "bond0" "vm-*" ];
-        networkConfig = {
-          Bridge = "br0";
-        };
-      };
-      # Bridge network
-      "10-br0" = {
-        matchConfig.Name = "br0";
-        bridgeConfig = { };
+        matchConfig.Name = "enp0s4";
         address = [ "192.168.69.14/24" ];
         gateway = [ "192.168.69.1" ];
         dns = [ "192.168.69.1" ];

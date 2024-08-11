@@ -23,6 +23,7 @@
     argocd
     kubernetes-helm
     nfs-utils
+    ceph
   ];
   networking.firewall.enable = lib.mkForce false; # Must be disabled for calico
   # TODO: fine grain firewall

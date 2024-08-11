@@ -29,6 +29,9 @@
       url = "github:blake-hamm/nix-config?dir=packages/laptop-charger";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Sops nix
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = { nixpkgs, self, ... } @ inputs:
@@ -97,7 +100,7 @@
 
         thinkpad = { name, nodes, pkgs, ... }: {
           deployment = {
-            tags = [ "thinkpad" "server" ];
+            tags = [ "thinkpad" "server" "k3s" ];
             targetUser = "${username}";
             targetHost = "192.168.69.14";
             targetPort = sshPort;
@@ -117,44 +120,34 @@
       };
 
       # VM and iso configs without colmena
-      nixosConfigurations =
-        let
-          pkgs = inputs.nixpkgs;
-          k3sVMs = import ./modules/k3s { inherit system inputs pkgs username; };
-
-          # k3s VM config
-          k3sServerVMConfig = k3sVMs.buildConfig {
-            kube_vip = "192.168.69.20";
-            k3s_role = "server";
-            n = 3;
+      nixosConfigurations = {
+        # ISO image
+        minimal-iso = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+            (import ./hosts/iso)
+            {
+              nixpkgs.config.allowBroken = true;
+            }
+          ];
+          specialArgs = {
+            host = "minimal-iso";
+            inherit self inputs username;
           };
-          k3sAgentVMConfig = k3sVMs.buildConfig {
-            kube_vip = "192.168.69.20";
-            k3s_role = "agent";
-            n = 3;
-          };
+        };
 
-          # All other config
-          otherConfig = {
-            # ISO image
-            minimal-iso = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
-                (import ./hosts/iso)
-                {
-                  nixpkgs.config.allowBroken = true;
-                }
-              ];
-              specialArgs = {
-                host = "minimal-iso";
-                inherit self inputs username;
-              };
-            };
-          };
-        in
-        # Combine config together
-        k3sServerVMConfig // k3sAgentVMConfig // otherConfig;
+        # example = nixpkgs.lib.nixosSystem {
+        #   inherit system;
+        #   modules = [
+        #     (import ./hosts/example)
+        #   ];
+        #   specialArgs = {
+        #     host = "example";
+        #     inherit self inputs username system;
+        #   };
+        # };
 
+      };
     };
 }

@@ -5,6 +5,5 @@
     ./disko.nix
     ./nfs.nix
     ./network.nix
-    ./vms.nix
   ];
 }

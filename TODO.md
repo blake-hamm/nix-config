@@ -34,15 +34,15 @@
 
 ## Next steps after are:
  - [ ] Run k3s on bare metal
-    - [ ] Setup sops-nix for k3s token
-    - [ ] Alter k3s module for bare metal
+    - [x] Setup sops-nix for k3s token
+    - [x] Alter k3s module for bare metal
     - [ ] Remove microvm setup
  - [ ] Setup opnsense vm w/ pcie passthrough
       - https://mynixos.com/nixpkgs/options/virtualisation.libvirtd
       - https://nixos.wiki/wiki/NixOps/Virtualization
       - https://flakehub.com/flake/AshleyYakeley/NixVirt
       - https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs/resources/domain#sharing-filesystem-between-libvirt-host-and-guest
- - [ ] Bastion host - https://astro.github.io/microvm.nix/ssh-deploy.html
+ - [ ] Bastion host (maybe)
  - [ ] Run home manager command (without sudo)
  - [ ] Automated CI/CD with argo events/workflows connected to SCM (monorepo)
    - [ ] Touchless deployment where: PR deploys to dev, merge to main deploys to prod

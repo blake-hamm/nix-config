@@ -1,11 +1,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/profiles/minimal.nix
+    ./../../modules/profiles/k3s-laptop-node.nix
     ./disko.nix
-    ./../../modules/hardware/nfs-client.nix
     ./network.nix
-    # ./vms.nix
-    ./../../modules/hardware/laptop-server.nix
   ];
 }

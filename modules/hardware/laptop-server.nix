@@ -14,12 +14,14 @@
       serviceConfig = {
         Type = "oneshot";
         Restart = "on-failure";
-        RestartSec = 60;
+        RestartSec = "60s";
+        StartLimitBurst = "10";
+        StartLimitInterval = "5min";
       };
     };
     timers."manage_charger" = {
       timerConfig = {
-        OnBootSec = "5s";
+        OnBootSec = "5min";
         OnUnitActiveSec = "30m";
         Persistent = true;
         Unit = "manage_charger.service";

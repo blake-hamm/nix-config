@@ -4,7 +4,7 @@
   disko.devices = {
     disk = {
       main = {
-        device = "/dev/disk/by-id/nvme-PM991_NVMe_Samsung_512GB__S509NF0N640144";
+        device = "/dev/disk/by-id/ata-PM991_NVMe_Samsung_512GB_S509NF0N640144";
         type = "disk";
         content = {
           type = "gpt";

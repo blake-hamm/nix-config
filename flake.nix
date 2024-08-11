@@ -135,8 +135,22 @@
             host = "minimal-iso";
             inherit self inputs username;
           };
-        };
-      };
 
-    };
-}
+          precision = nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [
+              "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+              (import ./hosts/precision)
+              {
+                nixpkgs.config.allowBroken = true;
+              }
+            ];
+            specialArgs = {
+              host = "precision";
+              inherit self inputs username system;
+            };
+          };
+        };
+
+      };
+    }

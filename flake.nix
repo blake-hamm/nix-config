@@ -137,16 +137,16 @@
           };
         };
 
-        precision = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [
-            (import ./hosts/precision)
-          ];
-          specialArgs = {
-            host = "precision";
-            inherit self inputs username system;
-          };
-        };
+        # example = nixpkgs.lib.nixosSystem {
+        #   inherit system;
+        #   modules = [
+        #     (import ./hosts/example)
+        #   ];
+        #   specialArgs = {
+        #     host = "example";
+        #     inherit self inputs username system;
+        #   };
+        # };
 
       };
     };

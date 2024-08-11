@@ -135,16 +135,16 @@
             host = "minimal-iso";
             inherit self inputs username;
           };
+        };
 
-          precision = nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = [
-              (import ./hosts/precision)
-            ];
-            specialArgs = {
-              host = "precision";
-              inherit self inputs username system;
-            };
+        precision = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            (import ./hosts/precision)
+          ];
+          specialArgs = {
+            host = "precision";
+            inherit self inputs username system;
           };
         };
 

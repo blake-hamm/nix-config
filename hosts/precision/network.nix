@@ -17,9 +17,10 @@
           Name = "enp0s4";
         };
         bondConfig = {
-          Mode = "active-backup";
-          PrimaryReselectPolicy = "always";
+          Mode = "802.3ad";
+          LACPTransmitRate = "fast";
           MIIMonitorSec = "1s";
+          MinLinks = 1;
         };
       };
     };
@@ -27,14 +28,11 @@
       # Usb Ethernet 2.5g nic as primary
       "10-enp0s20f0u4" = {
         matchConfig.Name = "enp0s20f0u4";
-        networkConfig = {
-          Bond = "enp0s4";
-          PrimarySlave = true;
-        };
+        networkConfig.Bond = "enp0s4";
       };
       # Built-in Ethernet nic
-      "10-eno1" = {
-        matchConfig.Name = "eno1";
+      "10-enp0s20f0u1" = {
+        matchConfig.Name = "enp0s20f0u1";
         networkConfig.Bond = "enp0s4";
       };
       # Bond network

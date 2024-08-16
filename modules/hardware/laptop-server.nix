@@ -22,7 +22,7 @@
     timers."manage_charger" = {
       timerConfig = {
         OnBootSec = "5min";
-        OnUnitActiveSec = "30m";
+        OnUnitActiveSec = "15m";
         Persistent = true;
         Unit = "manage_charger.service";
       };

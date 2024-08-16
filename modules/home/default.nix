@@ -10,5 +10,6 @@
     ./firefox.nix
     ./extras.nix
     ./uhk.nix
+    ./docker.nix
   ];
 }

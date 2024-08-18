@@ -94,6 +94,15 @@ sudo cat /var/lib/rancher/k3s/server/token
 ```
 Then, replace `my_token` in `./modules/k3s/k3s.nix` with the value of this token (only on the vm host machine). Then, you can start the rest of the nodes and they will join the cluster.
 
+To remove, run:
+```bash
+sudo rm -rf /var/lib/rancher
+sudo rm -rf /var/lib/calico
+sudo rm -rf /var/lib/cni
+sudo rm -rf /etc/rancher
+sudo rm -rf /etc/cni
+```
+
 
 ### ZFS
 *TODO: Use my ansible playbook instead(?)*

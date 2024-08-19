@@ -27,6 +27,8 @@
         };
         bondConfig = {
           Mode = "802.3ad";
+          TransmitHashPolicy = "layer3+4";
+          AdSelect = "bandwidth";
           LACPTransmitRate = "fast";
           MIIMonitorSec = "1s";
           MinLinks = 1;

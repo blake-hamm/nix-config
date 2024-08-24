@@ -48,7 +48,7 @@ async def switch_plug(power_strip, plug_alias):
 async def manage_charger(
   plug_alias,
   ip="192.168.69.53",
-  battery_lower_threshold=30,
+  battery_lower_threshold=40,
   battery_upper_threshold=80
 ):
     battery_level = check_battery_level()

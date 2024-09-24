@@ -21,6 +21,13 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  # Nix store/gc cleanup
+  nix.optimise.automatic = true;
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 10d";
+  };
+
   # Other system config
   services.printing.enable = true;
   security.sudo.wheelNeedsPassword = false;

@@ -9,6 +9,7 @@
   home-manager.users.${username} = {
     home.packages = with pkgs; [
       drawio
+      dbeaver-bin
       # etcher
       # kubectl
       # kubernetes-helm

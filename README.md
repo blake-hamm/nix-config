@@ -1,3 +1,5 @@
+[This has been archived and migrated to the `bhamm-lab` monorepo.](https://github.com/blake-hamm/bhamm-lab)
+
 # Nix Config
 This houses all my nix config accross my various machines.
 
